@@ -1,5 +1,6 @@
-import { SEO } from "@/lib/constants";
 import { Metadata } from "next";
+
+import { SEO } from "@lib/constants";
 
 const getStaticMeta = (): Metadata => ({
   title: SEO.TITLE,
