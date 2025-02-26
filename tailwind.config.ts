@@ -1,5 +1,19 @@
 import type { Config } from "tailwindcss";
 
+interface TailwindSizeMap {
+  [key: string]: string;
+}
+
+const generateSize = (name: string) => {
+  const sizes: TailwindSizeMap = {};
+
+  for (let i = 1; i <= 100; i += 1) {
+    sizes[`${name}${i}`] = `${i * 0.1}rem`;
+  }
+
+  return sizes;
+};
+
 export default {
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
@@ -23,6 +37,9 @@ export default {
       zIndex: {
         modal: "500",
       },
+
+      fontSize: generateSize("size"),
+      borderRadius: generateSize("radius"),
     },
   },
   plugins: [],
