@@ -1,3 +1,5 @@
+import { CloseIcon } from "@lib/components/server";
+
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { IconStoryBox } from "./components";
@@ -40,5 +42,11 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     children: <div className="w-full h-full">fds</div>,
+  },
+};
+
+export const Close: Story = {
+  args: {
+    children: <CloseIcon />,
   },
 };
