@@ -5,6 +5,7 @@ import { PropsWithChildren } from "react";
 import { CloseIcon } from "@lib/components/server";
 
 import { ModalPortal } from "./components";
+import { useKeydownModal } from "./hooks";
 
 import { AnimatePresence } from "motion/react";
 import { twMerge } from "tailwind-merge";
@@ -13,14 +14,18 @@ type ModalProps = PropsWithChildren<{
   isShow: boolean;
   onClose: () => void;
   hideCloseIcon?: boolean;
+  disableAwayClick?: boolean;
 }>;
 
 const Modal = ({
   isShow,
   onClose,
   hideCloseIcon = false,
+  disableAwayClick = false,
   children,
 }: ModalProps) => {
+  useKeydownModal({ isShow, onClose, disableAwayClick });
+
   return (
     <AnimatePresence>
       {isShow && (
