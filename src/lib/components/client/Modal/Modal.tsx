@@ -1,11 +1,12 @@
 "use client";
 
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, use } from "react";
 
 import { CloseIcon } from "@lib/components/server";
+import { useClickAway } from "@lib/hooks";
 
 import { ModalPortal } from "./components";
-import { useKeydownModal } from "./hooks";
+import { useClickAwayModal, useKeydownModal } from "./hooks";
 
 import { AnimatePresence } from "motion/react";
 import { twMerge } from "tailwind-merge";
@@ -24,13 +25,16 @@ const Modal = ({
   disableAwayClick = false,
   children,
 }: ModalProps) => {
+  const awayClose = useClickAwayModal(onClose);
   useKeydownModal({ isShow, onClose, disableAwayClick });
 
   return (
     <AnimatePresence>
       {isShow && (
         <ModalPortal isShow={isShow}>
-          <section className="w-full h-full flex items-center justify-center fixed top-0 left-0 bg-transparent_90 overflow-auto z-modal">
+          <section
+            className="w-full h-full flex items-center justify-center fixed top-0 left-0 bg-transparent_90 overflow-auto z-modal"
+            onClick={e => !disableAwayClick && awayClose(e)}>
             <article
               className={twMerge(
                 "min-h-[4rem] min-w-[4rem] p-[1rem] flex justify-end relative bg-white rounded-radius8",
