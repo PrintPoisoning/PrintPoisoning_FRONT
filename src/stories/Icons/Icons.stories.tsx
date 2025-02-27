@@ -39,12 +39,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {
-    children: <div className="w-full h-full">fds</div>,
-  },
-};
-
 export const Close: Story = {
   args: {
     children: <CloseIcon />,
