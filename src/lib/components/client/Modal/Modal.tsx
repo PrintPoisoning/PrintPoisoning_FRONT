@@ -38,7 +38,8 @@ const Modal = ({
             variants={backgroundVariant}
             initial="close"
             animate="show"
-            exit="close">
+            exit="close"
+          >
             <motion.article
               className={twMerge(
                 "min-h-[4rem] min-w-[4rem] p-[1rem] flex justify-end relative bg-white rounded-radius8",
@@ -47,7 +48,8 @@ const Modal = ({
               variants={modalVariant}
               initial="close"
               animate="show"
-              exit="close">
+              exit="close"
+            >
               {!hideCloseIcon && (
                 <motion.i
                   onClick={onClose}
@@ -57,7 +59,8 @@ const Modal = ({
                   }}
                   whileHover={{
                     opacity: 0.4,
-                  }}>
+                  }}
+                >
                   <CloseIcon size="100%" />
                 </motion.i>
               )}
