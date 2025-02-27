@@ -136,7 +136,8 @@ export const Default: Story = {
         <>
           <button
             className="w-[16rem] h-[5rem] bg-gray-500 rounded-radius8 text-size16 font-semibold text-white cursor-pointer"
-            onClick={openModal}>
+            onClick={openModal}
+          >
             Modal Open!!
           </button>
           <ModalComponent args={{ ...args, isShow, onClose: closeModal }} />
