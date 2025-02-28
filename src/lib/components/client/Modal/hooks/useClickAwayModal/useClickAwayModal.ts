@@ -1,3 +1,5 @@
+"use client";
+
 import { MouseEvent } from "react";
 
 import { useAwayClickModalCallback } from "./useClickAwayModal.type";
