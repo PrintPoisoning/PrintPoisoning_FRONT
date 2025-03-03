@@ -1,4 +1,5 @@
-import "@/lib/style/globals.css";
+import "@lib/font/pretendard.css";
+import "@lib/style/globals.css";
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
