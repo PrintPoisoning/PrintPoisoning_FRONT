@@ -24,6 +24,10 @@ export default {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        layout: "var(--max-width-global_layout)",
+      },
+
       colors: {
         background: "var(--background)",
 
