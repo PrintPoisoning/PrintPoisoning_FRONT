@@ -5,7 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import { getStaticMeta } from "@lib/utils";
 
-import TanstackProvider from "./_components/TanstackProvider/TanstackProvider";
+import { GlobalLayout, TanstackProvider } from "./_components";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +27,9 @@ export default function RootLayout({
   return (
     <html lang="ko-KO">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <TanstackProvider>{children}</TanstackProvider>
+        <TanstackProvider>
+          <GlobalLayout>{children}</GlobalLayout>
+        </TanstackProvider>
       </body>
     </html>
   );
