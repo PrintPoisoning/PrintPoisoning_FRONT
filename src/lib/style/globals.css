@@ -16,6 +16,8 @@
   --transparent_30: #23232330;
   --transparent_50: #23232350;
   --transparent_90: #23232390;
+
+  --max-width-global_layout: 60rem;
 }
 
 @media (prefers-color-scheme: dark) {
