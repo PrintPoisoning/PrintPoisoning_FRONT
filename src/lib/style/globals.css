@@ -4,7 +4,13 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+
+  --color_black: #000;
+
+  --color_gray_900: #2d2d2d;
+  --color_gray_700: #595959;
+  --color_gray_500: #878787;
+  --color_gray_300: #d0d0d3;
 
   --transparent_10: #23232310;
   --transparent_30: #23232330;
@@ -15,7 +21,6 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
   }
 }
 
@@ -29,6 +34,10 @@ html {
 body {
   width: 100%;
   height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   overflow: hidden;
 }
