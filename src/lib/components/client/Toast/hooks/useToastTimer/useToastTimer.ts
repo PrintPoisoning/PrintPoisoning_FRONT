@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 import { UseToastTimerProps } from "./useToastTimer.type";
