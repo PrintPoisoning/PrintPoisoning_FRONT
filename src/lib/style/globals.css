@@ -17,6 +17,11 @@
   --transparent_50: #23232350;
   --transparent_90: #23232390;
 
+  --color-toast-alert: #ffa500;
+  --color-toast-safe: #00c73c;
+  --color-toast-warning: #ffd400;
+  --color-toast-danger: #ed4044;
+
   --max-width-global_layout: 60rem;
 }
 
