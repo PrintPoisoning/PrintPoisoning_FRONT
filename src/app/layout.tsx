@@ -1,21 +1,11 @@
-import "@/lib/style/globals.css";
+import "@lib/font/pretendard.css";
+import "@lib/style/globals.css";
 
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 
 import { getStaticMeta } from "@lib/utils";
 
-import TanstackProvider from "./_components/TanstackProvider/TanstackProvider";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { GlobalLayout, TanstackProvider } from "./_components";
 
 export const metadata: Metadata = getStaticMeta();
 
@@ -26,8 +16,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko-KO">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <TanstackProvider>{children}</TanstackProvider>
+      <body>
+        <TanstackProvider>
+          <GlobalLayout>{children}</GlobalLayout>
+        </TanstackProvider>
       </body>
     </html>
   );
