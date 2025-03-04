@@ -3,6 +3,7 @@ import "@lib/style/globals.css";
 
 import type { Metadata } from "next";
 
+import { ToastProvider } from "@lib/components/client";
 import { getStaticMeta } from "@lib/utils";
 
 import { GlobalLayout, TanstackProvider } from "./_components";
@@ -18,7 +19,9 @@ export default function RootLayout({
     <html lang="ko-KO">
       <body>
         <TanstackProvider>
-          <GlobalLayout>{children}</GlobalLayout>
+          <GlobalLayout>
+            <ToastProvider>{children}</ToastProvider>
+          </GlobalLayout>
         </TanstackProvider>
       </body>
     </html>
