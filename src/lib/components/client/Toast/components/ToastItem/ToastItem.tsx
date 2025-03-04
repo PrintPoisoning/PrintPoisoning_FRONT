@@ -10,12 +10,12 @@ import { twMerge } from "tailwind-merge";
 
 const ToastItem = ({ type, message, deleteTime, onClose }: ToastItemProps) => {
   const backgroundColor = useToastColor({ type });
-  const isShow = useToastTimer({ time: 3000 });
+  const isShow = useToastTimer({ time: deleteTime });
   const { toastLayout, toastProgress } = useToastVariant({ deleteTime });
 
   return (
     <AnimatePresence>
-      {!isShow && (
+      {isShow && (
         <motion.li
           className="w-[30rem] h-[6.5rem] relative bg-white rounded-radius6 shadow-[0_0_2rem_0rem_rgba(0,0,0,0.2)] overflow-hidden"
           variants={toastLayout}
