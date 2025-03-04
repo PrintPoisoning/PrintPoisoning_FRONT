@@ -42,10 +42,16 @@ export default {
         gray_700: "var(--color_gray_700)",
         gray_500: "var(--color_gray_500)",
         gray_300: "var(--color_gray_300)",
+
+        toast_alert: "var(--color-toast_alert)",
+        toast_warning: "var(--color-toast_warning)",
+        toast_danger: "var(--color-toast_danger)",
+        toast_safe: "var(--color-toast_safe)",
       },
 
       zIndex: {
         modal: "500",
+        toast: "600",
       },
 
       fontSize: generateSize("size"),
