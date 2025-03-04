@@ -46,6 +46,7 @@ export default {
 
       zIndex: {
         modal: "500",
+        toast: "600",
       },
 
       fontSize: generateSize("size"),
