@@ -42,6 +42,11 @@ export default {
         gray_700: "var(--color_gray_700)",
         gray_500: "var(--color_gray_500)",
         gray_300: "var(--color_gray_300)",
+
+        toast_alert: "var(--color_toast_alert)",
+        toast_warning: "var(--color_toast_warning)",
+        toast_danger: "var(--color_toast_danger)",
+        toast_safe: "var(--color_toast_safe)",
       },
 
       zIndex: {
