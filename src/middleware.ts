@@ -3,7 +3,7 @@ import { MiddlewareConfig, NextRequest, NextResponse } from "next/server";
 import { auth } from "@lib/apis";
 
 export const config: MiddlewareConfig = {
-  // matcher: ["*"],
+  matcher: ["/", "/login"],
 };
 
 export const middleware = async (request: NextRequest) => {
