@@ -1,10 +1,6 @@
 import { IconCommonProps } from "../Icon.type";
 
-const CloseIcon = ({
-  size = "3.2rem",
-  fill = "black",
-  ...rest
-}: IconCommonProps) => {
+const CloseIcon = ({ size = "3.2rem", fill = "black", ...rest }: IconCommonProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
