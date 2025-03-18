@@ -43,6 +43,8 @@ export default {
         gray_500: "var(--color_gray_500)",
         gray_300: "var(--color_gray_300)",
 
+        kakao_main: "var(--color-kakao_main)",
+
         toast_alert: "var(--color-toast_alert)",
         toast_warning: "var(--color-toast_warning)",
         toast_danger: "var(--color-toast_danger)",

@@ -22,6 +22,8 @@
   --color-toast_warning: #ffd400;
   --color-toast_danger: #ed4044;
 
+  --color-kakao_main: #fde500;
+
   --max-width-global_layout: 60rem;
 }
 
@@ -37,9 +39,8 @@ html {
 
   font-size: 62.5%;
   font-family:
-    "Pretendard Variable", "Pretendard", "-apple-system", "BlinkMacSystemFont",
-    system-ui, "Roboto", "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
-    "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
+    "Pretendard Variable", "Pretendard", "-apple-system", "BlinkMacSystemFont", system-ui, "Roboto", "Helvetica Neue",
+    "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", sans-serif;
 }
 
