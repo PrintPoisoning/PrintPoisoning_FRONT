@@ -1,5 +1,6 @@
 import {
   CloseIcon,
+  KakaoLogoIcon,
   MenuBookIcon,
   MenuCloverIcon,
   MenuTalkIcon,
@@ -79,5 +80,11 @@ export const MenuTalk: Story = {
 export const MenuUser: Story = {
   args: {
     children: <MenuUserIcon />,
+  },
+};
+
+export const KakaoLogo: Story = {
+  args: {
+    children: <KakaoLogoIcon />,
   },
 };
