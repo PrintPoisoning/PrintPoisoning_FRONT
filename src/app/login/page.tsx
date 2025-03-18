@@ -1,12 +1,10 @@
-import { singInWithKakao } from "@lib/apis";
+import { KakaoLoginButton } from "./_components";
 
 const LoginPage = () => {
   return (
-    <div>
-      <form action={singInWithKakao}>
-        <button>login</button>
-      </form>
-    </div>
+    <section className="w-full h-full relative">
+      <KakaoLoginButton />
+    </section>
   );
 };
 
