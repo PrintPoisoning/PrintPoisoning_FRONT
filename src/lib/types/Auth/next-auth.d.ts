@@ -7,5 +7,6 @@ declare module "next-auth" {
     } & DefaultSession["user"];
 
     sessionToken: string;
+    errorMessage: string | null;
   }
 }
