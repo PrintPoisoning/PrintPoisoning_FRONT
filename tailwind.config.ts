@@ -64,6 +64,20 @@ export default {
       boxShadow: {
         layout_shadow: "0 0 3rem 3rem rgba(0, 0, 0, 0.1)",
       },
+
+      animation: {
+        login_up_down_4s: "login_up_down 4s infinite ease-in-out",
+        login_up_down_6s: "login_up_down 6s infinite ease-in-out",
+        login_up_down_8s: "login_up_down 8s infinite ease-in-out",
+      },
+
+      keyframes: {
+        login_up_down: {
+          "0%": { transform: "translateY(-1rem)" },
+          "50%": { transform: "translateY(1rem)" },
+          "100%": { transform: "translateY(-1rem)" },
+        },
+      },
     },
   },
   plugins: [],
