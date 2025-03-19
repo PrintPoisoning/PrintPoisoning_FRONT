@@ -38,17 +38,19 @@ export default {
 
         black: "var(--color_black)",
 
+        main: "var(--color_main)",
+
         gray_900: "var(--color_gray_900)",
         gray_700: "var(--color_gray_700)",
         gray_500: "var(--color_gray_500)",
         gray_300: "var(--color_gray_300)",
 
-        kakao_main: "var(--color-kakao_main)",
+        kakao_main: "var(--color_kakao_main)",
 
-        toast_alert: "var(--color-toast_alert)",
-        toast_warning: "var(--color-toast_warning)",
-        toast_danger: "var(--color-toast_danger)",
-        toast_safe: "var(--color-toast_safe)",
+        toast_alert: "var(--color_toast_alert)",
+        toast_warning: "var(--color_toast_warning)",
+        toast_danger: "var(--color_toast_danger)",
+        toast_safe: "var(--color_toast_safe)",
       },
 
       zIndex: {

@@ -5,6 +5,8 @@
 :root {
   --background: #ffffff;
 
+  --color_main: #43d493;
+
   --color_black: #000;
 
   --color_gray_900: #2d2d2d;
@@ -17,12 +19,12 @@
   --transparent_50: #23232350;
   --transparent_90: #23232390;
 
-  --color-toast_alert: #ffa500;
-  --color-toast_safe: #00c73c;
-  --color-toast_warning: #ffd400;
-  --color-toast_danger: #ed4044;
+  --color_toast_alert: #ffa500;
+  --color_toast_safe: #00c73c;
+  --color_toast_warning: #ffd400;
+  --color_toast_danger: #ed4044;
 
-  --color-kakao_main: #fde500;
+  --color_kakao_main: #fde500;
 
   --max-width-global_layout: 60rem;
 }
