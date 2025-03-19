@@ -1,3 +1,5 @@
+import { BookLoginAsset, CloudLoginAsset, MascotLoginAsset } from "./_assets";
+
 const LoginBackground = () => {
   return (
     <article className="w-full h-full flex justify-center items-center flex-col">
@@ -11,7 +13,19 @@ const LoginBackground = () => {
         </span>
       </span>
 
-      <div className="w-full h-[60%] relative border-2 border-red-300"></div>
+      <div className="w-full h-[50%] relative flex items-center justify-center">
+        <div className="absolute top-0 animate-login_up_down_4s">
+          <CloudLoginAsset />
+        </div>
+
+        <div className="absolute bottom-[46%] left-[4rem] animate-login_up_down_6s">
+          <BookLoginAsset />
+        </div>
+
+        <div className="absolute bottom-0 right-[-11rem] animate-login_up_down_8s">
+          <MascotLoginAsset />
+        </div>
+      </div>
     </article>
   );
 };
