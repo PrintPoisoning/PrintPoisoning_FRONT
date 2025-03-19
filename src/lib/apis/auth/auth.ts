@@ -110,6 +110,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         session.sessionToken = token.accessToken.toString();
       }
 
+      if (token.errorMessage) {
+        session.errorMessage = token.errorMessage.toString();
+      }
+
       if (token.user) {
         const { test } = token.user as IUser;
 
