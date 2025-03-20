@@ -1,10 +1,6 @@
 import { MINUTE } from "@lib/constants";
 
-import {
-  QueryClient,
-  defaultShouldDehydrateQuery,
-  isServer,
-} from "@tanstack/react-query";
+import { QueryClient, defaultShouldDehydrateQuery, isServer } from "@tanstack/react-query";
 
 const makeQuery = () => {
   return new QueryClient({
