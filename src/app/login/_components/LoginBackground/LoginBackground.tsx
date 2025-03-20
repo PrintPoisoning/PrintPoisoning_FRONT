@@ -3,7 +3,7 @@ import { BookLoginAsset, CloudLoginAsset, MascotLoginAsset } from "./_assets";
 const LoginBackground = () => {
   return (
     <article className="w-full h-full flex justify-center items-center flex-col">
-      <span className="w-[90%] flex flex-col gap-[1rem] text-size24 font-semibold select-none">
+      <span className="w-[90%] flex flex-col gap-[1rem] text-size24 font-semibold select-none font-jalnan">
         <p>{"반가워요 :)"}</p>
         <span>
           <p>나만의 작은 책장</p>

@@ -62,6 +62,10 @@ export default {
       fontSize: generateSize("size"),
       borderRadius: generateSize("radius"),
 
+      fontFamily: {
+        jalnan: "var(--font-jalnan)",
+      },
+
       boxShadow: {
         layout_shadow: "0 0 3rem 3rem rgba(0, 0, 0, 0.1)",
       },
