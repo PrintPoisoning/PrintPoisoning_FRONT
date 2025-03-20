@@ -19,7 +19,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
   session: {
     strategy: "jwt",
-    maxAge: MINUTE * 10,
+    maxAge: EXPIRES_TIME,
   },
 
   callbacks: {
@@ -76,6 +76,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           };
         }
       }
+
+      // 회원 가입을 해야하는 유저인가?
 
       try {
         /* Refreshing Sign In */
