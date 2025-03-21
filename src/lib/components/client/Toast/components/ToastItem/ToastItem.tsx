@@ -1,48 +1,28 @@
 "use client";
 
-import { CloseIcon } from "@lib/components/server";
-
-import { useToastColor, useToastTimer, useToastVariant } from "../../hooks";
+import { useToastTimer, useToastVariant } from "../../hooks";
 import { ToastItemProps } from "./ToastItem.type";
 
 import { AnimatePresence, motion } from "motion/react";
-import { twMerge } from "tailwind-merge";
 
-const ToastItem = ({ type, message, deleteTime, onClose }: ToastItemProps) => {
-  const backgroundColor = useToastColor({ type });
+const ToastItem = ({ message, deleteTime, onClose }: ToastItemProps) => {
   const isShow = useToastTimer({ time: deleteTime });
-  const { toastLayout, toastProgress } = useToastVariant({ deleteTime });
+  const { toastLayout } = useToastVariant();
 
   return (
     <AnimatePresence>
       {isShow && (
         <motion.li
-          className="w-[30rem] h-[6.5rem] relative bg-white rounded-radius6 shadow-[0_0_2rem_0rem_rgba(0,0,0,0.2)] overflow-hidden"
+          className="w-[32rem] h-[3.6rem] px-[1.8rem] flex items-center justify-center bg-transparent_50 rounded-[3.6rem] overflow-hidden select-none cursor-pointer"
           variants={toastLayout}
           initial="close"
           animate="show"
           exit="close"
+          onClick={onClose}
         >
-          <button
-            className="absolute top-[0.2rem] right-[0.2rem] hover:opacity-30 transition-opacity"
-            type="button"
-            aria-label="toast close button"
-            onClick={onClose}
-          >
-            <CloseIcon size="1.6rem" />
-          </button>
-
-          <p className="w-[30rem] h-[6rem] p-[1rem] pt-[1.4rem]">{message}</p>
-
-          <div className="w-[30rem] h-[0.5rem] flex justify-center">
-            <motion.div
-              className={twMerge("w-[30rem] h-[0.5rem]", backgroundColor)}
-              variants={toastProgress}
-              initial="close"
-              animate="show"
-              transition={toastProgress.transition}
-            />
-          </div>
+          <p className="w-full text-size14 text-white text-center font-semibold">
+            {message}
+          </p>
         </motion.li>
       )}
     </AnimatePresence>
