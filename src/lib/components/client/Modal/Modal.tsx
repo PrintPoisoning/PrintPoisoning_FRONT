@@ -1,21 +1,13 @@
 "use client";
 
-import { PropsWithChildren } from "react";
-
 import { CloseIcon } from "@lib/components/server";
 
+import { ModalProps } from "./Modal.type";
 import { ModalPortal } from "./components";
 import { useClickAwayModal, useKeydownModal, useModalVariant } from "./hooks";
 
 import { AnimatePresence, motion } from "motion/react";
 import { twMerge } from "tailwind-merge";
-
-type ModalProps = PropsWithChildren<{
-  isShow: boolean;
-  onClose: () => void;
-  hideCloseIcon?: boolean;
-  disableAwayClick?: boolean;
-}>;
 
 const Modal = ({
   isShow,

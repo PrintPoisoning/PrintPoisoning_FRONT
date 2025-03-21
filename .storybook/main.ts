@@ -30,10 +30,7 @@ const config: StorybookConfig = {
         "@lib": path.resolve(__dirname, "../src/lib"),
 
         // useRoute에 대한 mocking
-        "next/navigation": path.resolve(
-          __dirname,
-          "./mocks/nextNavigationMock.ts",
-        ),
+        "next/navigation": path.resolve(__dirname, "./mocks/nextNavigation.ts"),
       };
     }
 

@@ -1,4 +1,10 @@
-import { CloseIcon } from "@lib/components/server";
+import {
+  CloseIcon,
+  MenuBookIcon,
+  MenuCloverIcon,
+  MenuTalkIcon,
+  MenuUserIcon,
+} from "@lib/components/server";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -18,6 +24,13 @@ import { IconStoryBox } from "./components";
  * }
  * ```
  * - 모든 Icon은 SVG 형태로 구현 되어있습니다.
+ *
+ *
+ * ### Size 조절 불가 Icon
+ * - MenuCloverIcon
+ * - MenuBookIcon
+ * - MenuTalkIcon
+ * - MenuUserIcon
  * */
 const meta = {
   title: "Icons/공통 아이콘 목록",
@@ -42,5 +55,29 @@ type Story = StoryObj<typeof meta>;
 export const Close: Story = {
   args: {
     children: <CloseIcon />,
+  },
+};
+
+export const MenuClover: Story = {
+  args: {
+    children: <MenuCloverIcon />,
+  },
+};
+
+export const MenuBook: Story = {
+  args: {
+    children: <MenuBookIcon />,
+  },
+};
+
+export const MenuTalk: Story = {
+  args: {
+    children: <MenuTalkIcon />,
+  },
+};
+
+export const MenuUser: Story = {
+  args: {
+    children: <MenuUserIcon />,
   },
 };
