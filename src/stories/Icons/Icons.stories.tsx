@@ -2,6 +2,7 @@ import {
   CloseIcon,
   MenuBookIcon,
   MenuCloverIcon,
+  MenuTalkIcon,
 } from "@lib/components/server";
 
 import type { Meta, StoryObj } from "@storybook/react";
@@ -27,6 +28,7 @@ import { IconStoryBox } from "./components";
  * ### Size 조절 불가 Icon
  * - MenuCloverIcon
  * - MenuBookIcon
+ * - MenuTalkIcon
  * */
 const meta = {
   title: "Icons/공통 아이콘 목록",
@@ -63,5 +65,11 @@ export const MenuClover: Story = {
 export const MenuBook: Story = {
   args: {
     children: <MenuBookIcon />,
+  },
+};
+
+export const MenuTalk: Story = {
+  args: {
+    children: <MenuTalkIcon />,
   },
 };
