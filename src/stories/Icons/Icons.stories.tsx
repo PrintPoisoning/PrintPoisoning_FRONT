@@ -1,4 +1,4 @@
-import { CloseIcon } from "@lib/components/server";
+import { CloseIcon, CloverIcon } from "@lib/components/server";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -42,5 +42,11 @@ type Story = StoryObj<typeof meta>;
 export const Close: Story = {
   args: {
     children: <CloseIcon />,
+  },
+};
+
+export const Clover: Story = {
+  args: {
+    children: <CloverIcon />,
   },
 };
