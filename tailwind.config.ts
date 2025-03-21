@@ -38,9 +38,12 @@ export default {
 
         black: "var(--color_black)",
 
+        main: "var(--color_main)",
+
         gray_900: "var(--color_gray_900)",
         gray_700: "var(--color_gray_700)",
         gray_500: "var(--color_gray_500)",
+        gray_400: "var(--color_gray_400)",
         gray_300: "var(--color_gray_300)",
 
         toast_alert: "var(--color-toast_alert)",
