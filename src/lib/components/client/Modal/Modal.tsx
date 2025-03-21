@@ -42,8 +42,8 @@ const Modal = ({
           >
             <motion.article
               className={twMerge(
-                "min-h-[4rem] min-w-[4rem] p-[1rem] flex justify-end relative bg-white rounded-radius8",
-                !hideCloseIcon && "pt-[3.2rem]",
+                "min-h-[4rem] min-w-[4rem] p-[2rem] flex justify-end relative bg-white rounded-radius30",
+                !hideCloseIcon && "pt-[4rem]",
               )}
               variants={modalVariant}
               initial="close"
@@ -53,7 +53,7 @@ const Modal = ({
               {!hideCloseIcon && (
                 <motion.i
                   onClick={onClose}
-                  className="w-[2rem] h-[2rem] absolute top-[0.6rem] cursor-pointer select-none"
+                  className="w-[2rem] h-[2rem] absolute top-[1rem] cursor-pointer select-none"
                   whileTap={{
                     scale: 1.2,
                   }}
