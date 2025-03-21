@@ -30,7 +30,7 @@ const Menubar = () => {
             <Link
               href={href}
               className={twMerge(
-                "flex flex-col items-center text-[1.2rem] text-gray_400 transition-all",
+                "mb-[1.6rem] flex flex-col items-center text-[1.2rem] text-gray_400 transition-all",
                 isActive && "text-main",
               )}
             >
