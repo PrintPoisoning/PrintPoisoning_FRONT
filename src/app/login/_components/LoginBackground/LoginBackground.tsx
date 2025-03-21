@@ -32,7 +32,7 @@ const LoginBackground = () => {
         <Image
           src={MascotLoginImage}
           alt="mascot_login_image"
-          className="min-w-[28rem] absolute top-[-2%] right-[-26%] animate-login_up_down_8s"
+          className="min-w-[36rem] absolute bottom-[-32%] right-[-26%] animate-login_up_down_8s"
         />
       </div>
     </article>
