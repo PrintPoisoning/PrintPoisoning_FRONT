@@ -1,4 +1,4 @@
-import { Menubar } from "@lib/containers/server";
+import { Menubar } from "@lib/containers/client";
 
 import { Meta, StoryObj } from "@storybook/react";
 
