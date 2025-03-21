@@ -8,7 +8,7 @@ import { Meta, StoryObj } from "@storybook/react";
  * ## Toast Ui Component
  *
  * Toast UI를 편하게 사용할 수 있도록 구현한 Toast Component입니다.<br>
- * `deleteTime`, `type` option을 통해 상황에 맞춰 커스텀 할 수 있습니다.<br>
+ * `deleteTime` option을 통해 상황에 맞춰 커스텀 할 수 있습니다.<br>
  *
  * ### use
  *
@@ -16,7 +16,7 @@ import { Meta, StoryObj } from "@storybook/react";
  * 이후 `useToast` hook 내부 `createToast` 함수를 이용해 Toast를 생성 할수 있습니다.<br>
  *
  * - **createToast 첫번째 인자**에 생성할 메세지를 전달합니다.
- * - **createToast 두번째 인자**에 `deleteTime`, `type`을 전달 할수 있습니다.
+ * - **createToast 두번째 인자**에 `deleteTime`을 전달 할수 있습니다.
  *
  * <br>
  *
@@ -35,7 +35,7 @@ import { Meta, StoryObj } from "@storybook/react";
  *
  *    { children }
  *
- *    <button onClick={() => createToast("Hello Toast!!" , { deleteTime: 3000, type: "safe" })}>
+ *    <button onClick={() => createToast("Hello Toast!!" , { deleteTime: 3000 })}>
  *      Toast Open!!
  *    </button>
  *
@@ -51,9 +51,6 @@ import { Meta, StoryObj } from "@storybook/react";
  * - **deleteTime (optional)**<br>
  *   두 번째 인자에 `deleteTime`을 전달합니다. ( default: 3000 )
  *
- * - **type ( optional )**<br>
- *   두 번째 인자에 `type`을 전달합니다. ( default: "alert" )
- *
  * ### type
  *
  * - **message** : `string`
@@ -61,7 +58,6 @@ import { Meta, StoryObj } from "@storybook/react";
  * <br>
  *
  * - **deleteTime ( optional )** : `number` ( ms )
- * - **type ( optional)** : `alert` | `safe` | `warning` | `danger`
  * */
 const meta = {
   title: "Components/Toast",
@@ -81,10 +77,6 @@ const meta = {
       description: "Toast가 삭제되는 시간을 변경합니다.",
     },
 
-    type: {
-      description: "Toast 의 색상을 변경합니다.",
-    },
-
     onClose: {
       control: { disable: true },
     },
@@ -93,7 +85,6 @@ const meta = {
   args: {
     message: "Hello Toast!!",
     deleteTime: 3000,
-    type: "alert",
     onClose: () => {},
   },
 } satisfies Meta<typeof ToastItem>;
@@ -114,7 +105,6 @@ export const Default: Story = {
               onClick={() =>
                 createToast(args.message, {
                   deleteTime: args.deleteTime,
-                  type: args.type,
                 })
               }
             >

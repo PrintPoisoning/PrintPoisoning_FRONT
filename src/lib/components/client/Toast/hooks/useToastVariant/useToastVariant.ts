@@ -2,9 +2,7 @@
 
 import { useMemo } from "react";
 
-import { UseToastVariantProps } from "./useToastVariant.type";
-
-const useToastVariant = ({ deleteTime }: UseToastVariantProps) => {
+const useToastVariant = () => {
   const toastLayout = useMemo(
     () => ({
       close: {
@@ -21,23 +19,8 @@ const useToastVariant = ({ deleteTime }: UseToastVariantProps) => {
     [],
   );
 
-  const toastProgress = useMemo(
-    () => ({
-      close: { translateX: "-100%" },
-      show: {
-        translateX: "0%",
-      },
-      transition: {
-        duration: deleteTime / 1000 + 0.05,
-        ease: "linear",
-      },
-    }),
-    [deleteTime],
-  );
-
   return {
     toastLayout,
-    toastProgress,
   };
 };
 
