@@ -5,11 +5,14 @@
 :root {
   --background: #ffffff;
 
+  --color_main: #43d493;
+
   --color_black: #000;
 
   --color_gray_900: #2d2d2d;
   --color_gray_700: #595959;
   --color_gray_500: #878787;
+  --color_gray_400: #a5a5a5;
   --color_gray_300: #d0d0d3;
 
   --transparent_10: #23232310;
@@ -52,4 +55,8 @@ body {
   justify-content: center;
 
   overflow: hidden;
+}
+
+li {
+  list-style: none;
 }
