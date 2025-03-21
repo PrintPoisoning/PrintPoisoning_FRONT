@@ -1,3 +1,3 @@
-export { default as MascotLoginAsset } from "./MascotLoginAsset/MascotLoginAsset";
-export { default as BookLoginAsset } from "./BookLoginAsset/BookLoginAsset";
-export { default as CloudLoginAsset } from "./CloudLoginAsset/CloudLoginAsset";
+export { default as MascotLoginImage } from "./mascot_login.png";
+export { default as CloverLoginImage } from "./clover_login.png";
+export { default as BookLoginImage } from "./book_login.png";
