@@ -1,4 +1,6 @@
-import { BookLoginAsset, CloudLoginAsset, MascotLoginAsset } from "./_assets";
+import Image from "next/image";
+
+import { BookLoginImage, CloverLoginImage, MascotLoginImage } from "./_assets";
 
 const LoginBackground = () => {
   return (
@@ -14,17 +16,24 @@ const LoginBackground = () => {
       </span>
 
       <div className="w-full h-[50%] relative flex items-center justify-center">
-        <div className="absolute top-0 animate-login_up_down_4s">
-          <CloudLoginAsset />
-        </div>
+        <Image
+          src={CloverLoginImage}
+          alt="clover_login_image"
+          sizes="100% 100%"
+          className="absolute bottom-[59%] left-[28%] animate-login_up_down_4s"
+        />
 
-        <div className="absolute bottom-[46%] left-[4rem] animate-login_up_down_6s">
-          <BookLoginAsset />
-        </div>
+        <Image
+          src={BookLoginImage}
+          alt="book_login_image"
+          className="absolute top-[36%] left-[4rem] animate-login_up_down_6s"
+        />
 
-        <div className="absolute bottom-0 right-[-11rem] animate-login_up_down_8s">
-          <MascotLoginAsset />
-        </div>
+        <Image
+          src={MascotLoginImage}
+          alt="mascot_login_image"
+          className="min-w-[28rem] absolute top-[-2%] right-[-26%] animate-login_up_down_8s"
+        />
       </div>
     </article>
   );
