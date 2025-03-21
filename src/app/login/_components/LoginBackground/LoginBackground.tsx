@@ -15,7 +15,7 @@ const LoginBackground = () => {
         </span>
       </span>
 
-      <div className="w-full h-[50%] relative flex items-center justify-center">
+      <div className="w-full h-[50%] relative flex items-center justify-center pointer-events-none">
         <Image
           src={CloverLoginImage}
           alt="clover_login_image"
