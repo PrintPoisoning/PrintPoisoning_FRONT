@@ -6,9 +6,9 @@ import {
 } from "@lib/components/server";
 
 const MENU_LIST = [
-  { title: "나의 책풀", href: "/", MenuIcon: MenuCloverIcon },
-  { title: "기록", href: "/", MenuIcon: MenuBookIcon },
-  { title: "커뮤니티", href: "/", MenuIcon: MenuTalkIcon },
+  { title: "나의 책풀", href: "/myBook", MenuIcon: MenuCloverIcon },
+  { title: "기록", href: "/record", MenuIcon: MenuBookIcon },
+  { title: "커뮤니티", href: "/community", MenuIcon: MenuTalkIcon },
   { title: "프로필", href: "/profile", MenuIcon: MenuUserIcon },
 ] as const;
 
