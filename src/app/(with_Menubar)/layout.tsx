@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 
-import { Menubar } from "@lib/containers/server";
+import { Menubar } from "@lib/containers/client";
 
 const layout = ({ children }: PropsWithChildren) => {
   return (

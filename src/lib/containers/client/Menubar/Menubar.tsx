@@ -34,7 +34,10 @@ const Menubar = () => {
                 isActive && "text-main",
               )}
             >
-              <MenuIcon fill={isActive ? colors.main : colors.gray_400} />
+              <MenuIcon
+                className=" opacity-[0.7]"
+                fill={isActive ? colors.main : colors.gray_400}
+              />
               {title}
             </Link>
           </li>

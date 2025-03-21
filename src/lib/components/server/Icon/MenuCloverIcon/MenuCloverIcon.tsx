@@ -14,7 +14,7 @@ const MenuCloverIcon = ({
       xmlns="http://www.w3.org/2000/svg"
       {...rest}
     >
-      <g opacity="0.7">
+      <g>
         <ellipse
           cx="21.4453"
           cy="13.4215"
