@@ -30,7 +30,7 @@ const useClickAway = <T>(callback: UseClickAwayCallback) => {
       window.removeEventListener("mousedown", handleEvent);
       window.removeEventListener("touchstart", handleEvent);
     };
-  }, [ref.current]);
+  }, []);
 
   return ref;
 };

@@ -21,7 +21,7 @@ const useKeydownModal = ({
     window.addEventListener("keydown", handleEvent);
 
     return () => window.removeEventListener("keydown", handleEvent);
-  }, [disableAwayClick, isShow]);
+  }, [disableAwayClick, isShow, onClose]);
 };
 
 export default useKeydownModal;
