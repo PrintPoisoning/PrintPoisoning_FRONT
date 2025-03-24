@@ -2,6 +2,7 @@ import NextAuth from "next-auth";
 import Kakao from "next-auth/providers/kakao";
 
 import { MINUTE, SECOND } from "@lib/constants";
+import { bookFullLogin } from "@lib/service";
 import { IUser } from "@lib/types";
 
 const THRESHOLD = SECOND * 10;
@@ -23,13 +24,38 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
 
   callbacks: {
+    signIn: async ({ account }) => {
+      // TODO : Log Remove
+      console.log("Kakao Login 접근");
+
+      if (account && account.access_token) {
+        const { isMember, accessToken, refreshToken } = await bookFullLogin({ accessToken: account.access_token });
+
+        if (!isMember) {
+          // TODO : Log Remove
+          console.log("is Not Member : ", isMember);
+
+          return "/signup";
+        }
+
+        const service = {
+          accessToken,
+          refreshToken,
+        };
+
+        account.service = service;
+      }
+
+      return true;
+    },
+
     jwt: async ({ token, account }) => {
+      // TODO : Log Remove
       console.log("jwt token : ", token);
       console.log("jwt account : ", account);
 
       if (account && account.access_token) {
         /* First Sign In */
-
         // account.access_token 이 있는 경우는 카카오 로그인을 방금 한 순간
         console.log("First Sign In");
 
@@ -105,8 +131,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
 
     session: async ({ session, token }) => {
-      console.log("session !! : ", session);
-      console.log("session token : ", token);
+      // console.log("session !! : ", session);
+      // console.log("session token : ", token);
 
       if (token.accessToken) {
         session.sessionToken = token.accessToken.toString();
