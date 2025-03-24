@@ -1,1 +1,1 @@
-export { default as useGetExample } from "./useGetExample/useGetExample";
+export const Example = "";
