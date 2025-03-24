@@ -27,7 +27,7 @@ const Button = ({ children, onClick, className, ...rest }: ButtonProps) => {
   return (
     <motion.button
       className={twMerge(
-        "relative text-[1.6rem] font-semibold border-2 border-none rounded-[1rem] py-[1rem] px-[1.2rem] overflow-hidden cursor-pointer select-none",
+        "relative text-[1.4rem] font-semibold border-2 border-none rounded-[1rem] py-[1rem] px-[1.2rem] overflow-hidden cursor-pointer select-none",
         className,
       )}
       onClick={handleClick}
