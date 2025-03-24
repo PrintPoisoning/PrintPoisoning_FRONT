@@ -16,6 +16,12 @@ const eslintConfig = [
     "next/typescript",
     "plugin:prettier/recommended",
   ),
+
+  {
+    rules: {
+      "react/display-name": "off",
+    },
+  },
 ];
 
 export default eslintConfig;
