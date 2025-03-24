@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import Kakao from "next-auth/providers/kakao";
 
 import { MINUTE, SECOND } from "@lib/constants";
-import { bookFullLogin } from "@lib/service";
+import { bookFullLogin, getMe } from "@lib/service";
 import { IUser } from "@lib/types";
 
 const THRESHOLD = SECOND * 10;
@@ -25,25 +25,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
   callbacks: {
     signIn: async ({ account }) => {
-      // TODO : Log Remove
-      console.log("Kakao Login 접근");
-
       if (account && account.access_token) {
         const { isMember, accessToken, refreshToken } = await bookFullLogin({ accessToken: account.access_token });
 
-        if (!isMember) {
-          // TODO : Log Remove
-          console.log("is Not Member : ", isMember);
-
+        if (!isMember || !accessToken || !refreshToken) {
           return "/signup";
         }
 
-        const service = {
+        account.service = {
           accessToken,
           refreshToken,
         };
-
-        account.service = service;
       }
 
       return true;
@@ -51,31 +43,33 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
     jwt: async ({ token, account }) => {
       // TODO : Log Remove
-      console.log("jwt token : ", token);
-      console.log("jwt account : ", account);
+      // console.log("jwt token : ", token);
+      // console.log("jwt account : ", account);
 
-      if (account && account.access_token) {
+      if (account && account.access_token && account.service) {
         /* First Sign In */
         // account.access_token 이 있는 경우는 카카오 로그인을 방금 한 순간
         console.log("First Sign In");
 
         try {
-          return {
-            ...token,
-            accessToken: "추후 서비스 토큰으로 교체",
-            refreshToken: "추후 서비스 토큰으로 교체",
-            expiresAt: Date.now() + EXPIRES_TIME,
-            errorMessage: null,
-            user: {
-              test: "테스트용 User 객체",
-            },
-          };
-        } catch (error) {
-          console.error("초기 토큰 생성 실패 : ", error);
+          const { accessToken, refreshToken } = account.service;
+
+          const user = await getMe({ sessionToken: accessToken });
 
           return {
             ...token,
-            errorMessage: "error1",
+            accessToken,
+            refreshToken,
+            expiresAt: Date.now() + EXPIRES_TIME,
+            errorMessage: null,
+            user,
+          };
+        } catch (error) {
+          console.error("First Signin Error : ", error);
+
+          return {
+            ...token,
+            errorMessage: "sign in failed : request get me",
           };
         }
       }
@@ -87,18 +81,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
           // token.expiresAt 이 존재하는 경우는 이미 기존에 로그인을 한 기록이 있는 경우
 
-          return {
-            ...token,
-            user: {
-              test: "리프레시가 필요한 대상이 아님",
-            },
-          };
-        } catch (error) {
-          console.error("유효성 로그인 실패 : ", error);
+          const user = await getMe({ sessionToken: token.accessToken });
 
           return {
             ...token,
-            errorMessage: "failed to update user",
+            user,
+          };
+        } catch (error) {
+          console.error("Keep Sign In Error : ", error);
+
+          return {
+            ...token,
+            errorMessage: "failed to silent signin : request get me",
           };
         }
       }
@@ -109,16 +103,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         /* Refreshing Sign In */
         console.log("Refreshing Token");
 
+        throw new Error("추구 토큰 갱신 & getMe 요청 추가하기");
+
         return {
           ...token,
 
-          accessToken: "active refresh",
-          refreshToken: "active refresh",
-          expiresAt: Date.now() + EXPIRES_TIME,
-          errorMessage: null,
-          user: {
-            test: "리프레시 된 유저",
-          },
+          // accessToken: "active refresh",
+          // refreshToken: "active refresh",
+          // expiresAt: Date.now() + EXPIRES_TIME,
+          // errorMessage: null,
+          // user: {
+          //   test: "리프레시 된 유저",
+          // },
         };
       } catch (error) {
         console.error("토큰 갱신 실패 : ", error);
@@ -142,10 +138,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         session.errorMessage = token.errorMessage.toString();
       }
 
+      console.log("session : ", token);
       if (token.user) {
-        const { test } = token.user as IUser;
-
-        session.user.test = test;
+        const { nickname, isPublic, userId } = token.user as IUser;
+        session.user.nickname = nickname;
+        session.user.isPublic = isPublic;
+        session.user.userId = userId;
       }
 
       return session;
