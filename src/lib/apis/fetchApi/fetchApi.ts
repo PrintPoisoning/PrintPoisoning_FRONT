@@ -38,6 +38,7 @@ const post = async <T>(url: string, body?: T, options: RequestInit = {}) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(body ?? ""),
+
     ...options,
   });
 };
@@ -48,7 +49,6 @@ const get = async (url: string, options: RequestInit = {}) => {
     headers: {
       "Content-Type": "application/json",
     },
-
     ...options,
   });
 };
