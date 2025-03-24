@@ -49,6 +49,7 @@ const get = async (url: string, options: RequestInit = {}) => {
     headers: {
       "Content-Type": "application/json",
     },
+
     ...options,
   });
 };
