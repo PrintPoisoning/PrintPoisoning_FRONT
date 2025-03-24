@@ -9,4 +9,11 @@ declare module "next-auth" {
     sessionToken: string;
     errorMessage: string | null;
   }
+
+  interface Account extends DefaultAccount {
+    service?: {
+      accessToken: string | null;
+      refreshToken: string | null;
+    };
+  }
 }
