@@ -23,31 +23,32 @@ const apiInstance = async (url: string, options: RequestInit = {}) => {
   }
 
   if (!res.ok) {
-    const message = JSON.stringify(res.status) ?? "res.ok Error";
+    const message = JSON.stringify(res.body) ?? "res.ok Error";
+
     throw new Error(message);
   }
 
   return res;
 };
 
-const post = async <T>(url: string, body: T, options: RequestInit = {}) => {
+const post = async <T>(url: string, body?: T, options: RequestInit = {}) => {
   return await apiInstance(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(body),
+    body: JSON.stringify(body ?? ""),
     ...options,
   });
 };
 
-const get = async <T>(url: string, body: T, options: RequestInit = {}) => {
+const get = async (url: string, options: RequestInit = {}) => {
   return await apiInstance(url, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(body),
+
     ...options,
   });
 };
