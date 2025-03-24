@@ -1,3 +1,5 @@
 export interface IUser {
-  test: string;
+  userId: string;
+  nickname: string;
+  isPublic: true;
 }
