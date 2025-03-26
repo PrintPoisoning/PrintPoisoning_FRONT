@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {
   CloseIcon,
   KakaoLogoIcon,
@@ -7,9 +6,6 @@ import {
   MenuTalkIcon,
   MenuUserIcon,
 } from "@lib/components/server";
-=======
-import { CloseIcon, KakaoLogoIcon } from "@lib/components/server";
->>>>>>> 5e92c89713364023894aa462519eb318186f83f4
 
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -63,7 +59,6 @@ export const Close: Story = {
   },
 };
 
-<<<<<<< HEAD
 export const MenuClover: Story = {
   args: {
     children: <MenuCloverIcon />,
@@ -88,8 +83,6 @@ export const MenuUser: Story = {
   },
 };
 
-=======
->>>>>>> 5e92c89713364023894aa462519eb318186f83f4
 export const KakaoLogo: Story = {
   args: {
     children: <KakaoLogoIcon />,
