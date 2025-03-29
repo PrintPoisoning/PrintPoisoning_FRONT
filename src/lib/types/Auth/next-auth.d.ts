@@ -1,12 +1,7 @@
-import { DefaultSession } from "next-auth";
 import { DefaultJWT } from "next-auth/jwt";
-
-import { IUser } from "../User/User.type";
 
 declare module "next-auth" {
   interface Session {
-    user: IUser & DefaultSession["user"];
-
     sessionToken: string;
     errorMessage: string | null;
   }

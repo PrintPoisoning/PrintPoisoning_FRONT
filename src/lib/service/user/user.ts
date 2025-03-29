@@ -8,5 +8,7 @@ export const getMe = async ({ sessionToken }: GetMePrams) => {
     },
   });
 
+  console.log("Active User API");
+
   return (await res.json()) as GetMeResponse;
 };
