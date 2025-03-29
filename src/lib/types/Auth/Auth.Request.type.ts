@@ -7,3 +7,7 @@ export interface BookFullSignupParams {
   isPublic: boolean;
   token: string;
 }
+
+export interface BookFullRefreshParams {
+  refreshToken: string;
+}
