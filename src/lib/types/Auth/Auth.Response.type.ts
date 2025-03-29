@@ -9,3 +9,8 @@ export interface BookFullSignupResponse {
   isPublic: boolean;
   token: string;
 }
+
+export interface BookFullRefreshResponse {
+  accessToken: string;
+  refreshToken: string;
+}
