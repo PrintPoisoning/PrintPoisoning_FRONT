@@ -10,6 +10,8 @@ import {
 
 export const bookFullLogin = async (param: BookFullLoginParams) => {
   const res = await fetchApi.post<BookFullLoginParams>("/auth/login", param);
+
+  // TODO : Log Remove - Auth 로직 테스트
   console.log("Active BookFullLogin API");
 
   return (await res.json()) as BookFullLoginResponse;
@@ -27,6 +29,8 @@ export const bookFullRefresh = async ({ refreshToken }: BookFullRefreshParams) =
       Authorization: `Bearer ${refreshToken}`,
     },
   });
+
+  // TODO : Log Remove - Auth 로직 테스트
   console.log("Active BookFull Refresh API");
 
   return (await res.json()) as BookFullRefreshResponse;
