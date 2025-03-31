@@ -1,48 +1,78 @@
 import { RequestInit } from "next/dist/server/web/spec-extension/request";
 
-const API_KEY = process.env.SERVICE_KEY;
+import { auth } from "../auth/auth";
 
-const apiInstance = async (url: string, options: RequestInit = {}) => {
-  const res = await fetch(`${API_KEY}${url}`, {
-    ...options,
-  });
+class FetchApi {
+  private static API_KEY = process.env.SERVICE_KEY;
 
-  if (!res) {
-    throw new Error(`API Error : ${url}`);
-  }
+  private static jsonHeaders = {
+    "Content-Type": "application/json",
+  };
 
-  if (!res.ok) {
-    const message = JSON.stringify(res.body) ?? "res.ok Error";
+  private static apiInstance = async (url: string, options: RequestInit = {}) => {
+    const res = await fetch(`${this.API_KEY}${url}`, {
+      ...options,
+    });
 
-    throw new Error(message);
-  }
+    if (!res) {
+      // TODO - JY : 추후 에러 컨트롤 Code 반영
+      throw new Error(`API Error : ${url}`);
+    }
 
-  return res;
-};
+    if (!res.ok) {
+      // TODO - JY : 추후 에러 컨트롤 Code 반영
+      const message = JSON.stringify(res.body) ?? "res.ok Error";
 
-const post = async <T>(url: string, body?: T, options: RequestInit = {}) => {
-  return await apiInstance(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body ?? ""),
+      throw new Error(message);
+    }
 
-    ...options,
-  });
-};
+    return res;
+  };
 
-const get = async (url: string, options: RequestInit = {}) => {
-  return await apiInstance(url, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
+  post = async <T>(url: string, body?: T, options: RequestInit = {}) => {
+    return await FetchApi.apiInstance(url, {
+      method: "POST",
+      headers: {
+        ...FetchApi.jsonHeaders,
+        ...options.headers,
+      },
+      body: JSON.stringify(body ?? ""),
+      ...options,
+    });
+  };
 
-    ...options,
-  });
-};
+  get = async (url: string, options: RequestInit = {}) => {
+    return await FetchApi.apiInstance(url, {
+      method: "GET",
+      headers: {
+        ...FetchApi.jsonHeaders,
+        ...options.headers,
+      },
 
-const fetchApi = { post, get } as const;
+      ...options,
+    });
+  };
+
+  authGet = async (url: string, options: RequestInit = {}) => {
+    const session = await auth();
+
+    if (!session || !session.sessionToken) {
+      // TODO - JY : 추후 에러 컨트롤 Code 반영
+      throw new Error("Session token is not available");
+    }
+
+    return await FetchApi.apiInstance(url, {
+      method: "GET",
+      headers: {
+        ...FetchApi.jsonHeaders,
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        ...options.headers,
+      },
+      ...options,
+    });
+  };
+}
+
+const fetchApi = new FetchApi();
 
 export default fetchApi;
