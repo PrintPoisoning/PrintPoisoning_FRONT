@@ -16,6 +16,7 @@ export const middleware = async (request: NextRequest) => {
 
     // Error Session
     if (session && session.errorMessage) {
+      // TODO : Log Remove - Auth 로직 테스트
       console.log("Middleware Active Error - Session");
       await signOut();
       return NextResponse.redirect(new URL("/login", request.url));
@@ -24,6 +25,7 @@ export const middleware = async (request: NextRequest) => {
     // Login Page
     const isAuthUser = session && session.sessionToken;
     if (isLoginPage && isAuthUser) {
+      // TODO : Log Remove - Auth 로직 테스트
       console.log("Middleware Auth User - LoginPage");
       return NextResponse.redirect(new URL("/", request.url));
     }
@@ -31,6 +33,7 @@ export const middleware = async (request: NextRequest) => {
     // Not AuthUser Redirect Home
     const isNotAuthUser = !session || !session.sessionToken;
     if (!isLoginPage && isNotAuthUser) {
+      // TODO : Log Remove - Auth 로직 테스트
       console.log("Middleware Not Auth User");
       return NextResponse.redirect(new URL("/login", request.url));
     }

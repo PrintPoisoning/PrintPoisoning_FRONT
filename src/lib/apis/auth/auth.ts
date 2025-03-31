@@ -1,11 +1,11 @@
 import NextAuth from "next-auth";
 import Kakao from "next-auth/providers/kakao";
 
-import { MINUTE, SECOND } from "@lib/constants";
+import { HOUR, MINUTE } from "@lib/constants";
 import { bookFullLogin, bookFullRefresh } from "@lib/service";
 
-const THRESHOLD = SECOND * 10;
-const EXPIRES_TIME = MINUTE * 1;
+const THRESHOLD = MINUTE * 10;
+const EXPIRES_TIME = HOUR * 1;
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -41,13 +41,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
 
     jwt: async ({ token, account }) => {
-      // TODO : Log Remove
+      // TODO : Log Remove - Auth 로직 테스트
       // console.log("jwt token : ", token);
       // console.log("jwt account : ", account);
 
       if (account && account.access_token && account.service) {
         /* First Sign In */
         // account.access_token 이 있는 경우는 카카오 로그인을 방금 한 순간
+
+        // TODO : Log Remove - Auth 로직 테스트
         console.log("First Sign In");
 
         const { accessToken, refreshToken } = account.service;
@@ -66,6 +68,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         /* Keep Sign In */
         // token.expiresAt 이 존재하는 경우는 이미 기존에 로그인을 한 기록이 있는 경우
 
+        // TODO : Log Remove - Auth 로직 테스트
         console.log("Keep Sign In");
 
         return {
@@ -81,6 +84,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         console.log("Refreshing Token");
 
         const { accessToken, refreshToken } = await bookFullRefresh({ refreshToken: token.refreshToken });
+
+        // TODO : Log Remove - Auth 로직 테스트
         console.log("Refresh Token : ", accessToken, refreshToken);
 
         return {
@@ -106,6 +111,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
 
       if (token.errorMessage) {
+        // TODO : Log Remove - Auth 로직 테스트
         console.log("create session errorMessage : ", token.errorMessage);
         session.errorMessage = token.errorMessage.toString();
       }
