@@ -1,10 +1,6 @@
 import { IconCommonProps } from "../Icon.type";
 
-const MenuUserIcon = ({
-  size = "3.2rem",
-  fill = "black",
-  ...rest
-}: IconCommonProps) => {
+const MenuUserIcon = ({ size = "3.2rem", fill = "black", ...rest }: IconCommonProps) => {
   return (
     <svg
       width="16"

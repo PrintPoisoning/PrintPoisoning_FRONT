@@ -7,10 +7,7 @@ import { useCallback } from "react";
 const useIsActiveMenu = () => {
   const pathName = usePathname();
 
-  const isActiveMenu = useCallback(
-    (href: string) => pathName.includes(href),
-    [pathName],
-  );
+  const isActiveMenu = useCallback((href: string) => pathName.includes(href), [pathName]);
 
   return { isActiveMenu };
 };

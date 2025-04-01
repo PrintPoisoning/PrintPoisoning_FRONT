@@ -4,12 +4,7 @@ import { Modal } from "@lib/components/client";
 
 import { AlertModalProps } from "./AlertModal.type";
 
-const AlertModal = ({
-  message,
-  buttonText = "닫기",
-  onClose,
-  ...rest
-}: AlertModalProps) => {
+const AlertModal = ({ message, buttonText = "닫기", onClose, ...rest }: AlertModalProps) => {
   return (
     <Modal
       hideCloseIcon

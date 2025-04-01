@@ -3,7 +3,6 @@ import "@lib/style/globals.css";
 
 import type { Metadata } from "next";
 import { SessionProvider } from "next-auth/react";
-import { SessionProvider } from "next-auth/react";
 
 import { ToastProvider } from "@lib/components/client";
 import { jalnanFont } from "@lib/font/jalnan.font";

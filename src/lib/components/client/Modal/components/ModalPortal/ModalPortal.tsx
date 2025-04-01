@@ -6,9 +6,7 @@ import { createPortal } from "react-dom";
 import { ModalPortalProps } from "./ModalPortal.type";
 
 const ModalPortal = ({ children, isShow }: ModalPortalProps) => {
-  const [modalBaseElement, setModalBaseElement] = useState<HTMLElement | null>(
-    null,
-  );
+  const [modalBaseElement, setModalBaseElement] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
     setModalBaseElement(document.body);

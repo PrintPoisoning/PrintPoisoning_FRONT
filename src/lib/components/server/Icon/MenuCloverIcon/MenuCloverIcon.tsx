@@ -1,10 +1,6 @@
 import { IconCommonProps } from "../Icon.type";
 
-const MenuCloverIcon = ({
-  size = "3.2rem",
-  fill = "black",
-  ...rest
-}: IconCommonProps) => {
+const MenuCloverIcon = ({ size = "3.2rem", fill = "black", ...rest }: IconCommonProps) => {
   return (
     <svg
       width="3.5rem"
