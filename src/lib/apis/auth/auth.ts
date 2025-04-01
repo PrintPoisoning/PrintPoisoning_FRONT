@@ -90,8 +90,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
         return {
           ...token,
-          accessToken: accessToken,
-          refreshToken: refreshToken,
+          accessToken,
+          refreshToken,
           expiresAt: Date.now() + EXPIRES_TIME,
           errorMessage: null,
         };
