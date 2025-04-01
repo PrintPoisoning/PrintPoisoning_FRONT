@@ -1,9 +1,8 @@
+import { getSession } from "next-auth/react";
 import { RequestInit } from "next/dist/server/web/spec-extension/request";
 
-import { auth } from "../auth/auth";
-
 class FetchApi {
-  private static API_KEY = process.env.SERVICE_KEY;
+  private static API_KEY = process.env.NEXT_PUBLIC_SERVICE_KEY;
 
   private static jsonHeaders = {
     "Content-Type": "application/json",
@@ -54,7 +53,7 @@ class FetchApi {
   };
 
   authGet = async (url: string, options: RequestInit = {}) => {
-    const session = await auth();
+    const session = await getSession();
 
     if (!session || !session.sessionToken) {
       // TODO - JY : 추후 에러 컨트롤 Code 반영
@@ -65,7 +64,7 @@ class FetchApi {
       method: "GET",
       headers: {
         ...FetchApi.jsonHeaders,
-        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        Authorization: `Bearer ${session.sessionToken}`,
         ...options.headers,
       },
       ...options,
