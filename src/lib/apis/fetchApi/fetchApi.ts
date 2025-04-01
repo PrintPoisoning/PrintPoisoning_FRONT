@@ -25,8 +25,8 @@ class FetchApi {
 
     if (!res.ok) {
       // TODO - JY : 추후 에러 컨트롤 Code 반영
-      const message = JSON.stringify(res.body) ?? "res.ok Error";
-      console.log("res.ok Error : ", await res.json());
+      const message = await res.json();
+      console.log("res.ok Error : ", message);
 
       throw new Error(message);
     }
