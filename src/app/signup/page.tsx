@@ -1,8 +1,17 @@
-import Input from "@lib/components/client/Input/Input";
+"use client";
+
+import { Input, Toggle } from "@lib/components/client";
+import useToggle from "@lib/components/client/Toggle/hooks/useToggle";
 
 const SignupPage = () => {
+  const { checked, onChange } = useToggle({ initialState: false });
+
   return (
     <div>
+      <Toggle
+        checked={checked}
+        onChange={onChange}
+      />
       <Input
         label="닉네임"
         className="h-20"
