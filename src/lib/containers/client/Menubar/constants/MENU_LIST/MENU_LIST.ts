@@ -1,9 +1,4 @@
-import {
-  MenuBookIcon,
-  MenuCloverIcon,
-  MenuTalkIcon,
-  MenuUserIcon,
-} from "@lib/components/server";
+import { MenuBookIcon, MenuCloverIcon, MenuTalkIcon, MenuUserIcon } from "@lib/components/server";
 
 const MENU_LIST = [
   { title: "나의 책풀", href: "/myBook", MenuIcon: MenuCloverIcon },

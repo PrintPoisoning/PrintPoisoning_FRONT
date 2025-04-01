@@ -5,10 +5,7 @@ export interface CreateToastOptionsType {
   type?: ToastType;
 }
 
-export type CreateToastFunc = (
-  message: string,
-  options?: CreateToastOptionsType,
-) => void;
+export type CreateToastFunc = (message: string, options?: CreateToastOptionsType) => void;
 
 export interface ToastListItemType {
   message: string;

@@ -9,13 +9,7 @@ import { useClickAwayModal, useKeydownModal, useModalVariant } from "./hooks";
 import { AnimatePresence, motion } from "motion/react";
 import { twMerge } from "tailwind-merge";
 
-const Modal = ({
-  isShow,
-  onClose,
-  hideCloseIcon = false,
-  disableAwayClick = false,
-  children,
-}: ModalProps) => {
+const Modal = ({ isShow, onClose, hideCloseIcon = false, disableAwayClick = false, children }: ModalProps) => {
   useKeydownModal({ isShow, onClose, disableAwayClick });
   const awayClose = useClickAwayModal(onClose);
   const { modalVariant, backgroundVariant } = useModalVariant();

@@ -4,11 +4,7 @@ import { useEffect } from "react";
 
 import { UseKeydownModalProps } from "./useKeydownModal.type";
 
-const useKeydownModal = ({
-  isShow,
-  onClose,
-  disableAwayClick,
-}: UseKeydownModalProps) => {
+const useKeydownModal = ({ isShow, onClose, disableAwayClick }: UseKeydownModalProps) => {
   useEffect(() => {
     if (!isShow || disableAwayClick) return;
 
