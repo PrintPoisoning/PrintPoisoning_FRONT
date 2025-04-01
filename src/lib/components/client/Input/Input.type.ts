@@ -5,7 +5,6 @@ export interface InputProps
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
-  label?: string;
   error?: string;
   placeholder?: string;
   required?: boolean;
