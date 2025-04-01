@@ -1,4 +1,4 @@
-// TODO - JY : Remove ( Error 방지용으로 추후 삭제 )
+// TODO - JY : Remove
 export interface GetMePrams {
   sessionToken: string;
 }
