@@ -5,3 +5,4 @@ export { default as MenuCloverIcon } from "./MenuCloverIcon/MenuCloverIcon";
 export { default as MenuBookIcon } from "./MenuBookIcon/MenuBookIcon";
 export { default as MenuTalkIcon } from "./MenuTalkIcon/MenuTalkIcon";
 export { default as MenuUserIcon } from "./MenuUserIcon/MenuUserIcon";
+export { default as BackIcon } from "./BackIcon/BackIcon";

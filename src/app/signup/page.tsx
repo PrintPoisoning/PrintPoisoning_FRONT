@@ -2,12 +2,14 @@
 
 import { Input, Toggle } from "@lib/components/client";
 import useToggle from "@lib/components/client/Toggle/hooks/useToggle";
+import { BackIcon } from "@lib/components/server";
 
 const SignupPage = () => {
   const { checked, onChange } = useToggle({ initialState: false });
 
   return (
     <div>
+      <BackIcon />
       <Toggle
         checked={checked}
         onChange={onChange}
