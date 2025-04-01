@@ -2,7 +2,7 @@
 
 import { signIn, signOut } from "@lib/apis/auth/auth";
 
-export const singInWithKakao = async () => {
+export const signInWithKakao = async () => {
   await signIn("kakao", { redirectTo: "/" });
 };
 
