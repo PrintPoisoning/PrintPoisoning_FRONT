@@ -8,6 +8,8 @@ const THRESHOLD = MINUTE * 10;
 const EXPIRES_TIME = HOUR * 1;
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  trustHost: true,
+
   providers: [
     Kakao({
       clientId: process.env.KAKAO_API_KEY,
