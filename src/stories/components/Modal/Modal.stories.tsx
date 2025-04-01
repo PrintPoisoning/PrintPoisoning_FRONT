@@ -105,8 +105,7 @@ const meta = {
 
     disableAwayClick: {
       control: "boolean",
-      description:
-        "true 전달 시 `Away Click`을 통한 Modal close 기능을 비활성화합니다.",
+      description: "true 전달 시 `Away Click`을 통한 Modal close 기능을 비활성화합니다.",
     },
   },
 
@@ -123,9 +122,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     children: (
-      <div className="w-[28rem] h-[32rem] flex items-center justify-center text-size16 font-semibold">
-        Modal
-      </div>
+      <div className="w-[28rem] h-[32rem] flex items-center justify-center text-size16 font-semibold">Modal</div>
     ),
   },
   decorators: [
