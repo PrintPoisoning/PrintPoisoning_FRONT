@@ -9,7 +9,7 @@ import { twMerge } from "tailwind-merge";
 const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
   ({ checked, onChange, className, ...rest }, ref) => {
     return (
-      <div
+      <label
         className={twMerge(
           "relative inline-block w-[5.2rem] h-[3.2rem]",
           className,
@@ -36,7 +36,7 @@ const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
             )}
           />
         </div>
-      </div>
+      </label>
     );
   },
 );

@@ -1,5 +1,5 @@
 import { Button, Input, Toggle } from "@lib/components/client";
-import useToggle from "@lib/components/client/Toggle/hooks/useToggle";
+import { useToggle } from "@lib/components/client/Toggle/hooks";
 
 const SignupForm = () => {
   const { checked, onChange } = useToggle({ initialState: false });
