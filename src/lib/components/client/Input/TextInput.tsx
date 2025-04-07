@@ -2,11 +2,11 @@
 
 import { forwardRef } from "react";
 
-import { InputProps } from "./Input.type";
+import { InputProps } from "./TextInput.type";
 
 import { twMerge } from "tailwind-merge";
 
-const Input = forwardRef<HTMLInputElement, InputProps>(
+const TextInput = forwardRef<HTMLInputElement, InputProps>(
   ({ error, className, placeholder, ...rest }, ref) => {
     return (
       <div className="w-full flex flex-col gap-[8px]">
@@ -26,6 +26,4 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   },
 );
 
-Input.displayName = "Input";
-
-export default Input;
+export default TextInput;

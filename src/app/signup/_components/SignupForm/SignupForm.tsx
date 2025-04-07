@@ -1,4 +1,6 @@
-import { Button, Input, Toggle } from "@lib/components/client";
+"use client"
+
+import { Button, TextInput, ToggleInput } from "@lib/components/client";
 import { useToggle } from "@lib/components/client/Toggle/hooks";
 
 const SignupForm = () => {
@@ -10,7 +12,7 @@ const SignupForm = () => {
         <label className="text-[1.4rem] font-medium text-gray_500 pl-4">
           닉네임
         </label>
-        <Input
+        <TextInput
           className="h-20"
           placeholder="닉네임"
         />
@@ -27,7 +29,7 @@ const SignupForm = () => {
               공개 허용 시 모든 사용자가 프로필을 볼 수 있습니다.
             </p>
           </div>
-          <Toggle
+          <ToggleInput
             checked={checked}
             onChange={onChange}
           />

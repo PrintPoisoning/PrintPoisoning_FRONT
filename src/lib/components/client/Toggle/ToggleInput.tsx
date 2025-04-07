@@ -2,11 +2,11 @@
 
 import { forwardRef } from "react";
 
-import { ToggleProps } from "./Toggle.type";
+import { ToggleProps } from "./ToggleInput.type";
 
 import { twMerge } from "tailwind-merge";
 
-const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
+const ToggleInput = forwardRef<HTMLInputElement, ToggleProps>(
   ({ checked, onChange, className, ...rest }, ref) => {
     return (
       <label
@@ -41,6 +41,4 @@ const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
   },
 );
 
-Toggle.displayName = "Toggle";
-
-export default Toggle;
+export default ToggleInput;
