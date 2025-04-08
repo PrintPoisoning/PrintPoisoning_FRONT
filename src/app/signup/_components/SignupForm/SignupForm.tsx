@@ -1,20 +1,36 @@
 "use client"
 
 import { Button, TextInput, ToggleInput } from "@lib/components/client";
-import { useToggle } from "@lib/components/client/Toggle/hooks";
+import { useForm, Controller } from "react-hook-form";
 
 const SignupForm = () => {
-  const { checked, onChange } = useToggle({ initialState: false });
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+      nickname: '',
+      isPublic: false,
+    },
+  });
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
 
   return (
-    <form className="w-[85%] mx-auto flex flex-col gap-20 h-full">
+    <form className="w-[85%] mx-auto flex flex-col gap-20 h-full" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col gap-4">
         <label className="text-[1.4rem] font-medium text-gray_500 pl-4">
           닉네임
         </label>
-        <TextInput
-          className="h-20"
-          placeholder="닉네임"
+        <Controller
+          name="nickname"
+          control={control}
+          render={({ field, fieldState }) => (
+            <TextInput
+              {...field}
+              className="h-20"
+              placeholder="닉네임"
+            />
+          )}
         />
       </div>
 
@@ -29,9 +45,15 @@ const SignupForm = () => {
               공개 허용 시 모든 사용자가 프로필을 볼 수 있습니다.
             </p>
           </div>
-          <ToggleInput
-            checked={checked}
-            onChange={onChange}
+          <Controller
+            name="isPublic"
+            control={control}
+            render={({ field }) => (
+              <ToggleInput
+                checked={field.value}
+                onChange={(e) => field.onChange(e.target.checked)}
+              />
+            )}
           />
         </div>
       </div>
