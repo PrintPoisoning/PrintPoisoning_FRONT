@@ -1,5 +1,6 @@
 import { getSession } from "next-auth/react";
-import { RequestInit } from "next/dist/server/web/spec-extension/request";
+
+import { fetchError } from "@lib/utils";
 
 import { isServer } from "@tanstack/react-query";
 
@@ -24,9 +25,13 @@ class FetchApi {
     }
 
     if (!res.ok) {
-      // TODO - JY : 추후 에러 컨트롤 Code 반영
-      const message = await res.json();
-      console.log("res.ok Error : ", message);
+      const { timestamp, error, errorCode } = await res.json();
+
+      const message = fetchError({
+        errorCode: errorCode ?? res.status.toString(),
+        timestamp,
+        error,
+      });
 
       throw new Error(message);
     }
