@@ -21,7 +21,7 @@ const useBookFullError = ({ error }: UseBookFullErrorParams) => {
     console.error(`책풀에 문제가 발생했어요! 관리자에게 문의해주세요. (문의 코드 : ${parsingError.errorCode})`);
 
     return parsingError;
-  }, [error]);
+  }, [error.message]);
 
   useEffect(() => {
     createToast(errorData.message);
