@@ -1,4 +1,4 @@
-import ERROR_MESSAGE from "@lib/constants/ERROR_CODE/ERROR_CODE";
+import { ERROR_MESSAGE } from "@lib/constants";
 import { BookFullErrorResponse } from "@lib/types";
 
 import { MakeBookFullErrorParams } from "./makeBookFullError.type";
