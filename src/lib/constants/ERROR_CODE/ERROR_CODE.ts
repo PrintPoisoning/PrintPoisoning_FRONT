@@ -1,4 +1,4 @@
-const ERROR_MESSAGE = (code: string) => {
+export const ERROR_MESSAGE = (code: string) => {
   switch (code) {
     case "404":
       return "존재하지 않는 페이지 혹은 요청입니다.";
@@ -10,5 +10,3 @@ const ERROR_MESSAGE = (code: string) => {
       return "일시적인 오류입니다!";
   }
 };
-
-export default ERROR_MESSAGE;
