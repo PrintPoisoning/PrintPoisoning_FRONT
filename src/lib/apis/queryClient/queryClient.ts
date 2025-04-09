@@ -10,6 +10,7 @@ const makeQuery = () => {
         refetchOnWindowFocus: false,
         staleTime: MINUTE,
         retryOnMount: false,
+        throwOnError: true,
       },
 
       dehydrate: {
