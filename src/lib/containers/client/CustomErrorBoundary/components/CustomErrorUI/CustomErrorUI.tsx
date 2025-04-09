@@ -3,13 +3,14 @@
 import { FallbackProps } from "react-error-boundary";
 
 import { Button } from "@lib/components/client";
+import { useBookFullError } from "@lib/hooks";
 
 const CustomErrorUI = ({ error, resetErrorBoundary }: FallbackProps) => {
-  console.log("error?? : ", error);
+  const { message } = useBookFullError({ error });
 
   return (
     <article className="w-full h-full flex flex-col items-center justify-center border-2">
-      <p className="text-2xl font-bold">{error.toString()}</p>
+      <p className="text-2xl font-bold">{message}</p>
       <Button
         className="bg-main text-white"
         onClick={resetErrorBoundary}
