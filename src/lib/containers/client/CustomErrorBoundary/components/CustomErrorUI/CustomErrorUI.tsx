@@ -9,10 +9,12 @@ const CustomErrorUI = ({ error, resetErrorBoundary }: FallbackProps) => {
   const { message } = useBookFullError({ error });
 
   return (
-    <article className="w-full h-full flex flex-col items-center justify-center border-2">
-      <p className="text-2xl font-bold">{message}</p>
+    <article className="w-full h-full flex flex-col items-center justify-center gap-[1rem] select-none">
+      <p className="text-[1.2rem] font-bold">문제가 발생했어요!</p>
+      <p className="text-[1.2rem] font-bold">{message}</p>
+
       <Button
-        className="bg-main text-white"
+        className="px-[1rem] py-[0.8rem] bg-main text-[1.2rem] text-white"
         onClick={resetErrorBoundary}
       >
         다시 시도
