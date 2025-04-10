@@ -70,10 +70,16 @@ export default {
         layout_shadow: "0 0 3rem 3rem rgba(0, 0, 0, 0.1)",
       },
 
+      backgroundImage: {
+        skeleton: "linear-gradient(120deg, #e6e6e6, #e6e6e6, #f0f0f0, #e6e6e6, #e6e6e6)",
+      },
+
       animation: {
         login_up_down_4s: "login_up_down 4s infinite ease-in-out",
         login_up_down_6s: "login_up_down 6s infinite ease-in-out",
         login_up_down_8s: "login_up_down 8s infinite ease-in-out",
+
+        skeleton: "skeleton 2s infinite linear",
       },
 
       keyframes: {
@@ -81,6 +87,11 @@ export default {
           "0%": { transform: "translateY(-1rem)" },
           "50%": { transform: "translateY(1rem)" },
           "100%": { transform: "translateY(-1rem)" },
+        },
+
+        skeleton: {
+          "0%": { transform: "translateX(-100%)" },
+          "50%, 100%": { transform: "translateX(100%)" },
         },
       },
     },
