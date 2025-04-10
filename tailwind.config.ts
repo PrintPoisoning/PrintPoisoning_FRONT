@@ -80,6 +80,7 @@ export default {
         login_up_down_8s: "login_up_down 8s infinite ease-in-out",
 
         skeleton: "skeleton 2s infinite linear",
+        loading_spinner: "loading_spinner 1s infinite ease",
       },
 
       keyframes: {
@@ -92,6 +93,11 @@ export default {
         skeleton: {
           "0%": { transform: "translateX(-100%)" },
           "50%, 100%": { transform: "translateX(100%)" },
+        },
+
+        loading_spinner: {
+          from: { transform: "rotate(0turn)" },
+          to: { transform: "rotate(1turn)" },
         },
       },
     },
