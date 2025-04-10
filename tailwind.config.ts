@@ -47,11 +47,6 @@ export default {
         gray_300: "var(--color_gray_300)",
 
         kakao_main: "var(--color_kakao_main)",
-
-        toast_alert: "var(--color_toast_alert)",
-        toast_warning: "var(--color_toast_warning)",
-        toast_danger: "var(--color_toast_danger)",
-        toast_safe: "var(--color_toast_safe)",
       },
 
       zIndex: {
