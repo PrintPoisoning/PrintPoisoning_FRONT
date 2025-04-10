@@ -1,1 +1,1 @@
-export { default as Loading } from "./Loading/Loading";
+export { default as LoadingBox } from "./LoadingBox/LoadingBox";
