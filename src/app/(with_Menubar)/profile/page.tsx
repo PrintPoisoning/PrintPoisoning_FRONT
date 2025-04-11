@@ -1,21 +1,11 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-
-import { AlertModal } from "@lib/containers/client";
+import { useWarningFallback } from "@lib/hooks";
 
 const ProfilePage = () => {
-  const router = useRouter();
+  const { FallbackComponent } = useWarningFallback();
 
-  return (
-    <section>
-      <AlertModal
-        isShow
-        onClose={() => router.replace("/")}
-        message="현재 준비중인 서비스입니다!"
-      />
-    </section>
-  );
+  return <section>{FallbackComponent}</section>;
 };
 
 export default ProfilePage;
