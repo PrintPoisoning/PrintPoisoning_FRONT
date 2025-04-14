@@ -8,4 +8,3 @@ export interface HeaderProps {
   leftButton?: HeaderButtonProps;
   rightButton?: HeaderButtonProps;
 }
-
