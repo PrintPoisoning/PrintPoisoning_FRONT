@@ -7,8 +7,9 @@ import Header from "@lib/components/client/Header/Header";
 
 const SignupHeader = () => {
   const router = useRouter();
+
   return (
-      <Header 
+      <Header
         title="회원가입"
         leftButton={{
           icon: <BackIcon />,
