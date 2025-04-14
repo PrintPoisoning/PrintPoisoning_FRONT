@@ -2,7 +2,7 @@ import { SignupForm, SignupHeader } from "./_components";
 
 const SignupPage = () => {
   return (
-    <section className="flex flex-col h-screen">
+    <section className="w-full h-full relative">
       <SignupHeader />
       <SignupForm />
     </section>
