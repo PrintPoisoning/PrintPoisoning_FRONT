@@ -12,7 +12,7 @@ const useToastStore = create<UseToastStore>(set => ({
     })),
 
   createToast: (message, options = {}) => {
-    const { deleteTime = 3000, type = "alert" } = options;
+    const { deleteTime = 3000 } = options;
     const id = uuidV4();
 
     set(({ toastList, removeToast }) => {
@@ -20,7 +20,7 @@ const useToastStore = create<UseToastStore>(set => ({
         removeToast(id);
       }, deleteTime + 250);
 
-      return { toastList: [...toastList, { id, message, deleteTime, type }] };
+      return { toastList: [...toastList, { id, message, deleteTime }] };
     });
   },
 }));
