@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
-import { useRouter } from "next/navigation";
-
+import { Header } from "@lib/components/client";
 import { BackIcon } from "@lib/components/server";
-import Header from "@lib/components/client/Header/Header";
+
+import { useSignupHeaderRoute } from "./hooks";
 
 const SignupHeader = () => {
-  const router = useRouter();
+  const handleRouterBack = useSignupHeaderRoute();
 
   return (
-      <Header
-        title="회원가입"
-        leftButton={{
-          icon: <BackIcon />,
-          onClick: () => router.push("/login")
-        }}
-      />
+    <Header
+      title="회원가입"
+      leftButton={{
+        icon: <BackIcon />,
+        onClick: handleRouterBack,
+      }}
+    />
   );
 };
 
