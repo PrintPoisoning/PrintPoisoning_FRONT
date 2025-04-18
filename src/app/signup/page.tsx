@@ -1,10 +1,19 @@
-import { SignupForm, SignupHeader } from "./_components";
+"use client";
+
+import { Step } from "@lib/containers/client";
+
+import { SignupForm, SignupHeader, SignupStepComplete, SignupStepOne } from "./_components";
 
 const SignupPage = () => {
   return (
     <section className="w-full h-full relative">
-      <SignupHeader />
-      <SignupForm />
+      <Step>
+        <SignupHeader />
+
+        <SignupForm>
+          <Step.Content contentList={[SignupStepOne, SignupStepComplete]} />
+        </SignupForm>
+      </Step>
     </section>
   );
 };
