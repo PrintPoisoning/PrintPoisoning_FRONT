@@ -1,12 +1,10 @@
 "use client";
 
-import { forwardRef } from "react";
-
 import { ToggleProps } from "./ToggleInput.type";
 
 import { twMerge } from "tailwind-merge";
 
-const ToggleInput = forwardRef<HTMLInputElement, ToggleProps>(({ checked, onChange, className, ...rest }, ref) => {
+const ToggleInput = ({ ref, checked, onChange, className, ...rest }: ToggleProps) => {
   return (
     <label className={twMerge("relative inline-block w-[5.2rem] h-[3.2rem]", className)}>
       <input
@@ -32,6 +30,6 @@ const ToggleInput = forwardRef<HTMLInputElement, ToggleProps>(({ checked, onChan
       </div>
     </label>
   );
-});
+};
 
 export default ToggleInput;
