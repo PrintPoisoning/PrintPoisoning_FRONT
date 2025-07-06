@@ -29,8 +29,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (account && account.access_token) {
         const { isMember, accessToken, refreshToken } = await bookFullLogin({ accessToken: account.access_token });
 
-        if (!isMember || !accessToken || !refreshToken) {
-          return "/signup";
+        if (!isMember) {
+          account.ssoToken = account.access_token;
+          return true;
+        }
+
+        if (!accessToken || !refreshToken) {
+          // 추후 Login 실패 페이지 별도 생성 필요
+          return "/login";
         }
 
         account.service = {
@@ -43,9 +49,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
 
     jwt: async ({ token, account }) => {
-      // TODO : Log Remove - Auth 로직 테스트
-      // console.log("jwt token : ", token);
-      // console.log("jwt account : ", account);
+      /* Sign Up User */
+      if (account && account.ssoToken && !account.service) {
+        return {
+          ...token,
+          ssoToken: account.ssoToken,
+        };
+      }
 
       if (account && account.access_token && account.service) {
         /* First Sign In */
@@ -108,6 +118,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
 
     session: async ({ session, token }) => {
+      if (token.ssoToken) {
+        session.ssoToken = token.ssoToken.toString();
+        return session;
+      }
+
       if (token.accessToken) {
         session.sessionToken = token.accessToken.toString();
       }
