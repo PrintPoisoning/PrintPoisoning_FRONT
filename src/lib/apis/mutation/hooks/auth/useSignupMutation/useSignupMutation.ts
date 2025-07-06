@@ -1,8 +1,7 @@
 import { useToast } from "@lib/hooks";
+import { bookFullSignup } from "@lib/service";
 
 import { useMutation } from "@tanstack/react-query";
-
-import { bookFullSignup } from "../../auth";
 
 const useSignupMutation = () => {
   const { createToast } = useToast();

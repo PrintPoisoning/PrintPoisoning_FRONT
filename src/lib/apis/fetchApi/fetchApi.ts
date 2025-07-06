@@ -92,6 +92,15 @@ class FetchApi {
       ...options,
     });
   };
+
+  authDelete = async (url: string, options: RequestInit = {}) => {
+    return await FetchApi.authInstance("DELETE", url, {
+      headers: {
+        ...FetchApi.jsonHeaders,
+        ...options.headers,
+      },
+    });
+  };
 }
 
 const fetchApi = new FetchApi();
