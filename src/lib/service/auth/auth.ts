@@ -18,7 +18,7 @@ export const bookFullLogin = async (param: BookFullLoginParams) => {
 };
 
 export const bookFullSignup = async (param: BookFullSignupParams) => {
-  const res = await fetchApi.post<BookFullSignupParams>("/users", param);
+  const res = await fetchApi.post<BookFullSignupParams>("/auth", param);
 
   return (await res.json()) as BookFullSignupResponse;
 };
