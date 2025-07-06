@@ -10,6 +10,7 @@ export const config: MiddlewareConfig = {
 export const middleware = async (request: NextRequest) => {
   try {
     const { pathname } = request.nextUrl;
+
     const session = await auth();
 
     const isLoginPage = pathname.startsWith("/login");
@@ -19,6 +20,7 @@ export const middleware = async (request: NextRequest) => {
     if (session && session.errorMessage) {
       // TODO : Log Remove - Auth 로직 테스트
       console.log("Middleware Active Error - Session");
+
       await signOut();
       return NextResponse.redirect(new URL("/login", request.url));
     }
@@ -26,21 +28,23 @@ export const middleware = async (request: NextRequest) => {
     const isAuthUser = session && session.sessionToken;
 
     // Login Page
-    if (isLoginPage && isAuthUser) {
+    if ((isLoginPage || isSignupPage) && isAuthUser) {
       // TODO : Log Remove - Auth 로직 테스트
       console.log("Middleware Auth User - LoginPage");
       return NextResponse.redirect(new URL("/", request.url));
     }
 
     // Signup Page
-    if (isSignupPage && isAuthUser) {
-      return NextResponse.redirect(new URL("/", request.url));
+    if (isSignupPage && (!session || !session.ssoToken)) {
+      return NextResponse.redirect(new URL("/login", request.url));
     }
 
-    // Not AuthUser Redirect Home
-    const isNotAuthUser = !session || !session.sessionToken;
+    // Signup User Redirect Signup Page
+    if (isLoginPage && session && session.ssoToken) {
+      return NextResponse.redirect(new URL("/signup", request.url));
+    }
 
-    if (!isLoginPage && !isSignupPage && isNotAuthUser) {
+    if (!isLoginPage && !isSignupPage && !isAuthUser) {
       // TODO : Log Remove - Auth 로직 테스트
       console.log("Middleware Not Auth User");
       return NextResponse.redirect(new URL("/login", request.url));
