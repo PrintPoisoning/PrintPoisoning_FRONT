@@ -17,9 +17,8 @@ const SignupForm = ({ children }: PropsWithChildren) => {
     },
   });
 
-  console.log("session : ", session);
-
   const onSubmit = (data: SignupFormValues) => {
+    console.log("session : ", session);
     console.log(data);
   };
 
