@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { BookLoginImage, CloverLoginImage, MascotLoginImage } from "./_assets";
+import { BookFullBookImage, BookFullCloverImage, BookFullMascotImage } from "@app/_assets";
 
 const LoginBackground = () => {
   return (
@@ -17,20 +17,20 @@ const LoginBackground = () => {
 
       <div className="w-full h-[50%] relative flex items-center justify-center pointer-events-none">
         <Image
-          src={CloverLoginImage}
+          src={BookFullCloverImage}
           alt="clover_login_image"
           sizes="100% 100%"
           className="absolute bottom-[59%] left-[28%] animate-login_up_down_4s"
         />
 
         <Image
-          src={BookLoginImage}
+          src={BookFullBookImage}
           alt="book_login_image"
           className="absolute top-[36%] left-[4rem] animate-login_up_down_6s"
         />
 
         <Image
-          src={MascotLoginImage}
+          src={BookFullMascotImage}
           alt="mascot_login_image"
           className="min-w-[36rem] absolute bottom-[-32%] right-[-26%] animate-login_up_down_8s"
         />
