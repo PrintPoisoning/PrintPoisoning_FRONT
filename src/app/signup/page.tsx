@@ -2,7 +2,7 @@
 
 import { Step } from "@lib/containers/client";
 
-import { SignupForm, SignupHeader, SignupStepComplete, SignupStepOne } from "./_components";
+import { SignupForm, SignupHeader, SignupStepOne } from "./_components";
 
 const SignupPage = () => {
   return (
@@ -11,7 +11,7 @@ const SignupPage = () => {
         <SignupHeader />
 
         <SignupForm>
-          <Step.Content contentList={[SignupStepOne, SignupStepComplete]} />
+          <Step.Content contentList={[SignupStepOne]} />
         </SignupForm>
       </Step>
     </section>

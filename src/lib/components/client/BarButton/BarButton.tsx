@@ -9,7 +9,7 @@ const BarButton = ({ children, className, ...rest }: ButtonProps) => {
       <Button
         {...rest}
         className={twMerge(
-          "w-[90%] h-[7.2rem] flex items-center justify-center gap-[1.6rem] bg-main rounded-[6rem] text-[1.6rem] font-semibold select-none",
+          "w-[90%] h-[7.2rem] flex items-center justify-center gap-[1.6rem] bg-main rounded-[6rem] text-[1.6rem] text-white font-semibold select-none",
 
           className,
         )}

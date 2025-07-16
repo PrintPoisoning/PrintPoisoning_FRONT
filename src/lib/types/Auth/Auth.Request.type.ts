@@ -5,9 +5,13 @@ export interface BookFullLoginParams {
 export interface BookFullSignupParams {
   nickname: string;
   isPublic: boolean;
-  kakaoToken: string;
+  token: string;
 }
 
 export interface BookFullRefreshParams {
   refreshToken: string;
+}
+
+export interface KakaoSignupParams {
+  callbackUrl?: string;
 }

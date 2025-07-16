@@ -1,47 +1,16 @@
 "use client";
 
-import { useSession } from "next-auth/react";
-
-import { use } from "react";
 import { useFormContext } from "react-hook-form";
 
 import { SignupFormValues } from "@app/signup/signup.type";
 
-import { Button, TextInput, ToggleInput } from "@lib/components/client";
-import { StepContext } from "@lib/containers/client";
-import { useSignupMutation } from "@lib/service/auth";
+import { TextInput, ToggleInput } from "@lib/components/client";
 
 const SignupStepOne = () => {
-  const { register, getValues, setValue, watch } = useFormContext<SignupFormValues>();
-  const { data } = useSession();
-
-  const { mutate: signup } = useSignupMutation();
-
-  const { nextStep } = use(StepContext);
-
-  const handleSignup = () => {
-    const { nickname, isPublic } = getValues();
-
-    if (!data || !data.ssoToken) {
-      return;
-    }
-
-    console.log({
-      nickname,
-      isPublic,
-      token: data.ssoToken,
-    });
-
-    signup(
-      { nickname, isPublic, kakaoToken: data.ssoToken },
-      {
-        onSuccess: nextStep,
-      },
-    );
-  };
+  const { register, setValue, watch } = useFormContext<SignupFormValues>();
 
   return (
-    <article className="w-full h-full p-[2rem] flex justify-center items-center flex-col gap-[5rem]">
+    <article className="w-full h-full p-[2rem] flex items-center flex-col gap-[5rem]">
       <div className="w-full flex flex-col gap-4">
         <label className="text-[1.6rem] font-medium text-gray_500 pl-[1rem]">닉네임</label>
 
@@ -67,13 +36,6 @@ const SignupStepOne = () => {
           />
         </div>
       </div>
-
-      <Button
-        className="bg-main text-white rounded-[6rem] w-full h-[5.7rem] mt-auto mb-[18.5rem] text-[1.6rem] font-semibold"
-        onClick={handleSignup}
-      >
-        가입하기
-      </Button>
     </article>
   );
 };
