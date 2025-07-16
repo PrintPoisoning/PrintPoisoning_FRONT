@@ -7,8 +7,13 @@ import { FormProvider, useForm } from "react-hook-form";
 
 import { SignupFormValues } from "@app/signup/signup.type";
 
+import { signInWithKakao, useSignupMutation } from "@lib/apis";
+import { BarButton } from "@lib/components/client";
+
 const SignupForm = ({ children }: PropsWithChildren) => {
-  const session = useSession();
+  const { data } = useSession();
+
+  const { mutate: signup } = useSignupMutation();
 
   const method = useForm<SignupFormValues>({
     defaultValues: {
@@ -17,9 +22,19 @@ const SignupForm = ({ children }: PropsWithChildren) => {
     },
   });
 
-  const onSubmit = (data: SignupFormValues) => {
-    console.log("session : ", session);
-    console.log(data);
+  const onSubmit = ({ nickname, isPublic }: SignupFormValues) => {
+    if (!data || !data.ssoToken) {
+      return;
+    }
+
+    signup(
+      { nickname, isPublic, token: data.ssoToken },
+      {
+        onSuccess: () => {
+          signInWithKakao({ callbackUrl: "/signup/welcome" });
+        },
+      },
+    );
   };
 
   return (
@@ -29,6 +44,8 @@ const SignupForm = ({ children }: PropsWithChildren) => {
         onSubmit={method.handleSubmit(onSubmit)}
       >
         {children}
+
+        <BarButton>가입하기</BarButton>
       </form>
     </FormProvider>
   );

@@ -4,7 +4,18 @@ import { MiddlewareConfig, NextRequest, NextResponse } from "next/server";
 import { auth } from "@lib/apis";
 
 export const config: MiddlewareConfig = {
-  matcher: ["/", "/login", "/signup", "/community/:path*", "/myBook/:path*", "/profile/:path*", "/record/:path*"],
+  matcher: [
+    "/",
+    "/login",
+
+    "/signup",
+    "/signup/welcome",
+
+    "/community/:path*",
+    "/myBook/:path*",
+    "/profile/:path*",
+    "/record/:path*",
+  ],
 };
 
 export const middleware = async (request: NextRequest) => {
@@ -15,6 +26,7 @@ export const middleware = async (request: NextRequest) => {
 
     const isLoginPage = pathname.startsWith("/login");
     const isSignupPage = pathname.startsWith("/signup");
+    const isSignupWelcomePage = pathname.startsWith("/signup/welcome");
 
     // Error Session
     if (session && session.errorMessage) {
@@ -26,6 +38,10 @@ export const middleware = async (request: NextRequest) => {
     }
 
     const isAuthUser = session && session.sessionToken;
+
+    if (isSignupWelcomePage && isAuthUser) {
+      return NextResponse.next();
+    }
 
     // Login Page
     if ((isLoginPage || isSignupPage) && isAuthUser) {

@@ -1,17 +1,20 @@
 import { signInWithKakao } from "@lib/apis";
-import { Button } from "@lib/components/client";
+import { BarButton } from "@lib/components/client";
 import { KakaoLogoIcon } from "@lib/components/server";
 
-const KakaoLoginButton = () => {
+const KakaoLoginButton = async () => {
+  const signupAction = async () => {
+    "use server";
+
+    await signInWithKakao();
+  };
+
   return (
-    <form
-      action={signInWithKakao}
-      className="w-full flex justify-center absolute bottom-[5.7rem]"
-    >
-      <Button className="w-[90%] h-[5.7rem] flex items-center justify-center gap-[1.6rem] rounded-[6rem] bg-kakao_main text-[1.6rem] font-semibold select-none">
+    <form action={signupAction}>
+      <BarButton className="bg-kakao_main text-black">
         <KakaoLogoIcon />
         <p>카카오로 계속하기</p>
-      </Button>
+      </BarButton>
     </form>
   );
 };
