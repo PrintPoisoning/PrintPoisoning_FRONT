@@ -57,6 +57,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         };
       }
 
+      if (token.ssoToken) {
+        return token;
+      }
+
       if (account && account.access_token && account.service) {
         /* First Sign In */
         // account.access_token 이 있는 경우는 카카오 로그인을 방금 한 순간
