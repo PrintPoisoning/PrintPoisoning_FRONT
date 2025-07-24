@@ -4,20 +4,57 @@ import { useFormContext } from "react-hook-form";
 
 import { SignupFormValues } from "@app/signup/signup.type";
 
-import { TextInput, ToggleInput } from "@lib/components/client";
+import { Button, TextInput, ToggleInput } from "@lib/components/client";
+
+import { useCheckNickname } from "./_hooks";
+
+import { twMerge } from "tailwind-merge";
 
 const SignupStepOne = () => {
-  const { register, setValue, watch } = useFormContext<SignupFormValues>();
+  const {
+    register,
+    setValue,
+    watch,
+    getValues,
+    clearErrors,
+    formState: { errors },
+  } = useFormContext<SignupFormValues>();
+
+  const { checkNickname, checkNicknameChange } = useCheckNickname({
+    getValues,
+    setValue,
+    clearErrors,
+  });
 
   return (
-    <article className="w-full h-full p-[2rem] flex items-center flex-col gap-[5rem]">
+    <article className="w-full h-full p-[2rem] flex items-center flex-col gap-[3rem]">
       <div className="w-full flex flex-col gap-4">
         <label className="text-[1.6rem] font-medium text-gray_500 pl-[1rem]">닉네임</label>
 
-        <TextInput
-          {...register("nickname")}
-          className="h-[5rem]"
-        />
+        <div className="w-full h-[5rem] flex items-center gap-[1rem]">
+          <TextInput
+            {...register("nickname", {
+              onChange: checkNicknameChange,
+              required: "닉네임을 입력해주세요!",
+            })}
+            className="h-[5rem]"
+          />
+
+          <Button
+            className={twMerge(
+              "w-[10rem] h-full text-nowrap bg-main text-white",
+              "disabled:bg-gray_300 disabled:cursor-default",
+            )}
+            onClick={checkNickname}
+            disabled={watch("isCheckNickname")}
+          >
+            중복 확인
+          </Button>
+        </div>
+
+        <p className="w-full h-[2.4rem] px-[1rem] flex items-center text-[1.6rem] text-main font-medium select-none">
+          {errors.nickname?.message ?? ""}
+        </p>
       </div>
 
       <div className="w-full pl-[1rem] flex flex-col gap-[1rem]">
