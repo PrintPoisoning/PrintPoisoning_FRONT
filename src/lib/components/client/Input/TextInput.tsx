@@ -12,7 +12,9 @@ const TextInput = ({ ref, error, placeholder, required, className, ...rest }: In
         placeholder={placeholder}
         required={required}
         className={twMerge(
-          "w-full text-[1.6rem] px-8 outline-none bg-[#F8F8F8] text-gray_900 placeholder:text-gray_300 placeholder:text-[1.6rem] rounded-full",
+          "w-full text-[1.6rem] px-8 outline-none bg-[#F8F8F8] text-gray_900 rounded-full",
+          "placeholder:text-gray_300 placeholder:text-[1.6rem]",
+          "focus:outline-2 focus:outline-main",
           className,
         )}
         {...rest}
