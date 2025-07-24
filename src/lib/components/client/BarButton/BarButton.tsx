@@ -10,7 +10,7 @@ const BarButton = ({ children, className, ...rest }: ButtonProps) => {
         {...rest}
         className={twMerge(
           "w-[90%] h-[7.2rem] flex items-center justify-center gap-[1.6rem] bg-main rounded-[6rem] text-[1.6rem] text-white font-semibold select-none",
-
+          "disabled:bg-gray_300 disabled:cursor-default",
           className,
         )}
       >
