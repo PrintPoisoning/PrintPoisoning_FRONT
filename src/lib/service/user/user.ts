@@ -1,7 +1,7 @@
 import { signOut } from "next-auth/react";
 
 import { fetchApi } from "@lib/apis";
-import { DeleteUserResponse, GetMeResponse } from "@lib/types";
+import { CheckNicknameParams, CheckNicknameResponse, DeleteUserResponse, GetMeResponse } from "@lib/types";
 
 export const getMe = async () => {
   const res = await fetchApi.authGet("/users");
@@ -15,4 +15,10 @@ export const deleteUser = async () => {
   await signOut();
 
   return (await res.json()) as DeleteUserResponse;
+};
+
+export const checkNickname = async ({ nickname }: CheckNicknameParams) => {
+  const res = await fetchApi.get(`/users/check-nickname?nickname=${nickname}`);
+
+  return (await res.json()) as CheckNicknameResponse;
 };
