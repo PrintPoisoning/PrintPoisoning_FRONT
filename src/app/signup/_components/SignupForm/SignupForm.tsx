@@ -9,9 +9,11 @@ import { SignupFormValues } from "@app/signup/signup.type";
 
 import { signInWithKakao, useSignupMutation } from "@lib/apis";
 import { BarButton } from "@lib/components/client";
+import { useToast } from "@lib/hooks";
 
 const SignupForm = ({ children }: PropsWithChildren) => {
   const { data } = useSession();
+  const { createToast } = useToast();
 
   const { mutate: signup } = useSignupMutation();
 
@@ -19,11 +21,18 @@ const SignupForm = ({ children }: PropsWithChildren) => {
     defaultValues: {
       nickname: "",
       isPublic: false,
+      isCheckNickname: false,
     },
   });
 
-  const onSubmit = ({ nickname, isPublic }: SignupFormValues) => {
+  const onSubmit = ({ nickname, isPublic, isCheckNickname }: SignupFormValues) => {
     if (!data || !data.ssoToken) {
+      return;
+    }
+
+    if (!isCheckNickname) {
+      method.setError("nickname", { message: "닉네임 중복 확인을 해주세요!" });
+      createToast("닉네임 중복 확인을 해주세요!");
       return;
     }
 
@@ -45,7 +54,7 @@ const SignupForm = ({ children }: PropsWithChildren) => {
       >
         {children}
 
-        <BarButton>가입하기</BarButton>
+        <BarButton disabled={!method.watch("isCheckNickname")}>가입하기</BarButton>
       </form>
     </FormProvider>
   );
