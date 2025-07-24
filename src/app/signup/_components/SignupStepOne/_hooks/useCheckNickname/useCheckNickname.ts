@@ -5,7 +5,7 @@ import { useCheckNicknameMutation } from "@lib/apis";
 import { UseCheckNicknameProps } from "./useCheckNickname.type";
 
 const useCheckNickname = ({ getValues, setValue, clearErrors, setError }: UseCheckNicknameProps) => {
-  const { mutate: checkNicknameMutate } = useCheckNicknameMutation();
+  const { mutate: checkNicknameMutate, isPending } = useCheckNicknameMutation();
 
   const [saveNickname, setSaveNickname] = useState("");
 
@@ -42,7 +42,7 @@ const useCheckNickname = ({ getValues, setValue, clearErrors, setError }: UseChe
     setValue("isCheckNickname", false);
   };
 
-  return { checkNickname, checkNicknameChange };
+  return { checkNickname, checkNicknameChange, isCheckingPending: isPending };
 };
 
 export default useCheckNickname;

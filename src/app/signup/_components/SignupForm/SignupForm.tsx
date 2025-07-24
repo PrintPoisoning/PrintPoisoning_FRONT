@@ -9,13 +9,14 @@ import { SignupFormValues } from "@app/signup/signup.type";
 
 import { signInWithKakao, useSignupMutation } from "@lib/apis";
 import { BarButton } from "@lib/components/client";
+import { LoadingSpinner } from "@lib/components/server";
 import { useToast } from "@lib/hooks";
 
 const SignupForm = ({ children }: PropsWithChildren) => {
   const { data } = useSession();
   const { createToast } = useToast();
 
-  const { mutate: signup } = useSignupMutation();
+  const { mutate: signup, isPending } = useSignupMutation();
 
   const method = useForm<SignupFormValues>({
     defaultValues: {
@@ -54,7 +55,17 @@ const SignupForm = ({ children }: PropsWithChildren) => {
       >
         {children}
 
-        <BarButton disabled={!method.watch("isCheckNickname")}>가입하기</BarButton>
+        <BarButton disabled={!method.watch("isCheckNickname") || isPending}>
+          {!isPending && "가입하기"}
+
+          {isPending && (
+            <LoadingSpinner
+              size="3rem"
+              wight="0.5rem"
+              color="white"
+            />
+          )}
+        </BarButton>
       </form>
     </FormProvider>
   );

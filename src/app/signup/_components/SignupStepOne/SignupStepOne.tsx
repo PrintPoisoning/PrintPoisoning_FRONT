@@ -5,6 +5,7 @@ import { useFormContext } from "react-hook-form";
 import { SignupFormValues } from "@app/signup/signup.type";
 
 import { Button, TextInput, ToggleInput } from "@lib/components/client";
+import { LoadingSpinner } from "@lib/components/server";
 
 import { useCheckNickname } from "./_hooks";
 
@@ -21,7 +22,7 @@ const SignupStepOne = () => {
     formState: { errors },
   } = useFormContext<SignupFormValues>();
 
-  const { checkNickname, checkNicknameChange } = useCheckNickname({
+  const { checkNickname, checkNicknameChange, isCheckingPending } = useCheckNickname({
     getValues,
     setValue,
     clearErrors,
@@ -38,19 +39,28 @@ const SignupStepOne = () => {
             {...register("nickname", {
               onChange: checkNicknameChange,
               required: "닉네임을 입력해주세요!",
+              disabled: isCheckingPending,
             })}
             className="h-[5rem]"
           />
 
           <Button
             className={twMerge(
-              "w-[10rem] h-full text-nowrap bg-main text-white",
+              "w-[10rem] h-full text-nowrap bg-main text-white flex items-center justify-center",
               "disabled:bg-gray_300 disabled:cursor-default",
             )}
             onClick={checkNickname}
-            disabled={watch("isCheckNickname")}
+            disabled={watch("isCheckNickname") || isCheckingPending}
           >
-            중복 확인
+            {!isCheckingPending && "중복 확인"}
+
+            {isCheckingPending && (
+              <LoadingSpinner
+                size="2.6rem"
+                wight="0.5rem"
+                color="white"
+              />
+            )}
           </Button>
         </div>
 
