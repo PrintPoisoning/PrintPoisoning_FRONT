@@ -14,6 +14,7 @@ const SignupStepOne = () => {
   const {
     register,
     setValue,
+    setError,
     watch,
     getValues,
     clearErrors,
@@ -24,6 +25,7 @@ const SignupStepOne = () => {
     getValues,
     setValue,
     clearErrors,
+    setError,
   });
 
   return (

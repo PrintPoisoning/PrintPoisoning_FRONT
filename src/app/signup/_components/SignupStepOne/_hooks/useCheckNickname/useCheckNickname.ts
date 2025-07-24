@@ -4,7 +4,7 @@ import { useCheckNicknameMutation } from "@lib/apis";
 
 import { UseCheckNicknameProps } from "./useCheckNickname.type";
 
-const useCheckNickname = ({ getValues, setValue, clearErrors }: UseCheckNicknameProps) => {
+const useCheckNickname = ({ getValues, setValue, clearErrors, setError }: UseCheckNicknameProps) => {
   const { mutate: checkNicknameMutate } = useCheckNicknameMutation();
 
   const [saveNickname, setSaveNickname] = useState("");
@@ -16,7 +16,13 @@ const useCheckNickname = ({ getValues, setValue, clearErrors }: UseCheckNickname
     checkNicknameMutate(
       { nickname: newNickname },
       {
-        onSuccess: ({ nickname }) => {
+        onSuccess: ({ nickname, isAvailable }) => {
+          if (!isAvailable) {
+            setError("nickname", { message: "이미 존재하는 닉네임입니다." });
+            setValue("isCheckNickname", false);
+            return;
+          }
+
           setSaveNickname(nickname);
           setValue("isCheckNickname", true);
           clearErrors("nickname");
