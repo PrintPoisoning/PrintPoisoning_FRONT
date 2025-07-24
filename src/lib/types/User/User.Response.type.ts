@@ -6,3 +6,8 @@ export interface DeleteUserResponse {
   isSuccess: boolean;
   message: string;
 }
+
+export interface CheckNicknameResponse {
+  nickname: string;
+  isAvailable: boolean;
+}
