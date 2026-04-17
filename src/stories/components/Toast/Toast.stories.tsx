@@ -2,7 +2,7 @@ import { ToastProvider } from "@lib/components/client";
 import { ToastItem } from "@lib/components/client/Toast/components";
 import { useToast } from "@lib/hooks";
 
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/nextjs";
 
 /**
  * ## Toast Ui Component

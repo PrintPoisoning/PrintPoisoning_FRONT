@@ -1,7 +1,7 @@
 import { Modal } from "@lib/components/client";
 import { useModal } from "@lib/hooks";
 
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/nextjs";
 
 /**
  * ## Modal Ui Component

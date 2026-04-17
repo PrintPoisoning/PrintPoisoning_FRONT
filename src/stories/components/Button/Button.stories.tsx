@@ -1,5 +1,5 @@
 import { Button } from "@/lib/components/client";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 /**
  * ## Button Component

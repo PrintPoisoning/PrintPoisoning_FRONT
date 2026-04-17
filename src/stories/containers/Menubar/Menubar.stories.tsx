@@ -1,6 +1,6 @@
 import { Menubar } from "@lib/containers/client";
 
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/nextjs";
 
 /**
  * ## Menubar Ui Component
