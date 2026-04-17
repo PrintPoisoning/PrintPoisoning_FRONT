@@ -4,18 +4,13 @@ import Link from "next/link";
 
 import React from "react";
 
-import tailwindConfig from "../../../../../tailwind.config";
 import { MENU_LIST } from "./constants";
 import { useActiveMenu } from "./hooks";
 
 import { twMerge } from "tailwind-merge";
-import resolveConfig from "tailwindcss/resolveConfig";
 
 const Menubar = () => {
   const { isActiveMenu } = useActiveMenu();
-
-  const { theme } = resolveConfig(tailwindConfig);
-  const { colors } = theme;
 
   return (
     <nav className="w-full h-[8rem] flex border-t-[0.1rem] border-main">
@@ -36,7 +31,7 @@ const Menubar = () => {
             >
               <MenuIcon
                 className=" opacity-[0.7]"
-                fill={isActive ? colors.main : colors.gray_400}
+                fill={isActive ? "var(--color_main)" : "var(--color_gray_400)"}
               />
               {title}
             </Link>

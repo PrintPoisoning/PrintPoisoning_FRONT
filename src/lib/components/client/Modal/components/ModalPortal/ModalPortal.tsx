@@ -1,16 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 
 import { ModalPortalProps } from "./ModalPortal.type";
 
-const ModalPortal = ({ children, isShow }: ModalPortalProps) => {
-  const [modalBaseElement, setModalBaseElement] = useState<HTMLElement | null>(null);
+const subscribe = () => () => {};
+const getClientSnapshot = (): HTMLElement | null => document.body;
+const getServerSnapshot = (): HTMLElement | null => null;
 
-  useEffect(() => {
-    setModalBaseElement(document.body);
-  }, []);
+const ModalPortal = ({ children, isShow }: ModalPortalProps) => {
+  const modalBaseElement = useSyncExternalStore(subscribe, getClientSnapshot, getServerSnapshot);
 
   useEffect(() => {
     if (isShow && modalBaseElement) {

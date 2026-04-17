@@ -6,7 +6,10 @@ import { Button } from "@lib/components/client";
 import { useBookFullError } from "@lib/hooks";
 
 const CustomErrorUI = ({ error, resetErrorBoundary }: FallbackProps) => {
-  const { message } = useBookFullError({ error });
+  const normalizedError =
+    error instanceof Error ? error : new Error(typeof error === "string" ? error : "Unknown error");
+
+  const { message } = useBookFullError({ error: normalizedError });
 
   return (
     <article className="w-full h-full flex flex-col items-center justify-center gap-[1rem] select-none">

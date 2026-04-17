@@ -4,6 +4,7 @@ import "@lib/style/globals.css";
 import type { Metadata } from "next";
 import { SessionProvider } from "next-auth/react";
 
+import { auth } from "@lib/apis";
 import { ToastProvider } from "@lib/components/client";
 import { jalnanFont } from "@lib/font/jalnan.font";
 import { getStaticMeta } from "@lib/utils";
@@ -13,7 +14,9 @@ import { RootLayoutProps } from "./layout.type";
 
 export const metadata: Metadata = getStaticMeta();
 
-export default function RootLayout({ children, session }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const session = await auth();
+
   return (
     <html
       lang="ko-KO"
