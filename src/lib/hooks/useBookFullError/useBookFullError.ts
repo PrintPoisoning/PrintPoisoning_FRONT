@@ -11,13 +11,15 @@ import { UseBookFullErrorParams } from "./useBookFullError.type";
 const useBookFullError = ({ error }: UseBookFullErrorParams) => {
   const { createToast } = useToast();
 
+  const message = error instanceof Error ? error.message : typeof error === "string" ? error : "";
+
   const errorData: BookFullErrorResponse = useMemo(() => {
-    if (!error?.message) {
+    if (!message) {
       return makeBookFullError();
     }
 
     try {
-      const parsingError: BookFullErrorResponse = JSON.parse(error.message);
+      const parsingError: BookFullErrorResponse = JSON.parse(message);
 
       if (!parsingError.errorCode || !parsingError.message) {
         return makeBookFullError();
@@ -29,7 +31,7 @@ const useBookFullError = ({ error }: UseBookFullErrorParams) => {
     } catch {
       return makeBookFullError();
     }
-  }, [error.message]);
+  }, [message]);
 
   useEffect(() => {
     createToast(errorData.message);
