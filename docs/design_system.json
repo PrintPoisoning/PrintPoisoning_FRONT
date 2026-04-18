@@ -1,0 +1,181 @@
+{
+  "projectInfo": {
+    "targetPlatform": "Mobile Web",
+    "theme": "Light / Dark (prefers-color-scheme)",
+    "description": "Book review & sharing service"
+  },
+  "codeGenerationRules": {
+    "importAliases": {
+      "clientComponents": "import { 컴포넌트명 } from '@lib/components/client'",
+      "serverComponents": "import { 컴포넌트명 } from '@lib/components/server'",
+      "icons": "import { 아이콘컴포넌트명 } from '@lib/components/server'"
+    },
+    "stylingConvention": "Tailwind CSS 기반이며, className과 twMerge를 이용해 스타일을 주입합니다. 컴포넌트에 디자인 프롭(variant 등)이 하드코딩 되어있지 않으면 직접 className으로 덮어씌웁니다.",
+    "tailwindCustomUtilities": {
+      "fontSize": "config에 의해 text-size1 (0.1rem) ~ text-size100 (10rem)까지 생성. arbitrary values (ex. text-[1.6rem]) 와 혼재 사용 가능.",
+      "borderRadius": "rounded-radius1 ~ rounded-radius100 까지 생성. arbitrary values 혼재 사용 가능."
+    }
+  },
+  "designTokens": {
+    "colors": {
+      "background": {
+        "light": "#ffffff",
+        "dark": "#0a0a0a",
+        "input": "#f8f8f8"
+      },
+      "brand": {
+        "main": "#43d493",
+        "kakao_main": "#fde500"
+      },
+      "text": {
+        "primary": "#2d2d2d",
+        "secondary": "#595959",
+        "tertiary": "#878787",
+        "placeholder": "#d0d0d3",
+        "inverse": "#ffffff"
+      },
+      "border": {
+        "default": "#d0d0d3"
+      },
+      "transparent": {
+        "10": "rgba(35, 35, 35, 0.1)",
+        "30": "rgba(35, 35, 35, 0.3)",
+        "50": "rgba(35, 35, 35, 0.5)",
+        "90": "rgba(35, 35, 35, 0.9)"
+      },
+      "status": {
+        "error": "toast_danger (#ff4d4f 등 시스템 에러 컬러 추정)"
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "primary": "'Pretendard', sans-serif",
+        "heading": "'Jalnan'"
+      },
+      "fontSize": {
+        "baseRule": "62.5% (1rem = 10px)",
+        "h1": "2.4rem",
+        "h2": "2.0rem",
+        "body": "1.6rem",
+        "description": "1.4rem",
+        "meta": "1.2rem",
+        "tiny": "1.0rem"
+      }
+    },
+    "layout": {
+      "maxWidth": "60rem",
+      "shadows": {
+        "layout_shadow": "0 0 3rem 3rem rgba(0, 0, 0, 0.1)"
+      },
+      "zIndex": {
+        "modal": 500,
+        "toast": 600
+      }
+    }
+  },
+  "componentSpecifications": {
+    "Button": {
+      "description": "기본 상호작용 버튼",
+      "export": "Button",
+      "props": "ButtonHTMLAttributes & MotionProps (variant 속성 없음)",
+      "visuals": {
+        "borderRadius": "1.0rem (rounded-radius10 등)",
+        "padding": "상하 1.0rem, 좌우 1.2rem (py-[1rem] px-[1.2rem])",
+        "typography": "1.4rem, font-semibold (text-[1.4rem])",
+        "border": "border-2 border-none 기본값 (필요 시 className 덮어씀)"
+      },
+      "interactions": {
+        "tap": "motion scale 0.98",
+        "click": "Ripple effect 렌더링"
+      }
+    },
+    "BarButton": {
+      "description": "화면 하단에 고정되는 굵은 띠 형태의 버튼",
+      "export": "BarButton",
+      "visuals": {
+        "wrapper": "absolute bottom-[10rem], max-layout 폭 기준, 중앙 정렬",
+        "button": {
+          "width": "90%",
+          "height": "7.2rem",
+          "backgroundColor": "main (#43d493)",
+          "borderRadius": "6rem (완전 둥근 모서리)",
+          "typography": "1.6rem, 텍스트 화이트, font-semibold",
+          "gap": "아이콘과 텍스트 사이 1.6rem"
+        },
+        "disabledState": "bg-gray_300, cursor-default"
+      }
+    },
+    "TextInput": {
+      "description": "폼 제출 시 사용하는 텍스트 입력 칸",
+      "export": "TextInput",
+      "props": "InputHTMLAttributes & { error?: string }",
+      "visuals": {
+        "container": "flex-col, 입력 칸과 에러 메시지 간격 0.8rem",
+        "inputBox": {
+          "backgroundColor": "#F8F8F8",
+          "typography": "1.6rem, 텍스트 gray_900",
+          "padding": "좌우 px-8",
+          "borderRadius": "full (완전 둥근 형태)"
+        },
+        "focusState": "outline-2, outline-main (#43d493)",
+        "placeholderState": "1.6rem, 텍스트 gray_300",
+        "errorText": "좌우 패딩 4(px-4), 1.0rem 텍스트, toast_danger 컬러"
+      }
+    },
+    "ToggleInput": {
+      "description": "ON/OFF 스위치",
+      "export": "ToggleInput",
+      "visuals": {
+        "wrapper": "가로 5.2rem, 세로 3.2rem",
+        "track": {
+          "checked": "bg-main",
+          "unchecked": "bg-gray_300",
+          "borderRadius": "full",
+          "transition": "300ms duration"
+        },
+        "thumb": {
+          "size": "2.6rem x 2.6rem",
+          "backgroundColor": "white",
+          "borderRadius": "full",
+          "checkedPosition": "left-[2.3rem]",
+          "uncheckedPosition": "left-[0.2rem]",
+          "shadow": "shadow-sm"
+        }
+      }
+    },
+    "Header": {
+      "description": "네비게이션 상단 바",
+      "export": "Header",
+      "props": "{ title, leftButton, rightButton }",
+      "visuals": {
+        "container": "flex, 좌우 패딩 1.6rem, 상하 패딩 4.8rem, relative 포지션",
+        "title": "2.4rem 텍스트, font-medium, 정중앙 정렬",
+        "leftRightButtons": "가장자리 절대위치(absolute) 배치 (좌/우 1.6rem 여백), 패딩 0.8rem 간격"
+      }
+    },
+    "Modal": {
+      "description": "화면 중앙 다이얼로그 모달",
+      "export": "Modal",
+      "visuals": {
+        "overlay": "고정(fixed) 전체 화면, 투명도 90% 검정(transparent_90), z-index: 500",
+        "dialogBox": "최소 크기 4rem x 4rem, 패딩 1rem, 흰색 바탕(bg-white), 0.8rem 라운딩(rounded-radius8)",
+        "closeIcon": "다이얼로그 우측 상단 absolute, top 0.6rem 위치, 크기 2rem x 2rem"
+      },
+      "interactions": {
+        "animation": "Framer motion scale & opacity 트랜지션 (show/closeVariants)"
+      }
+    },
+    "Icons": {
+      "exports": [
+        "CloseIcon",
+        "KakaoLogoIcon",
+        "MenuCloverIcon",
+        "MenuBookIcon",
+        "MenuTalkIcon",
+        "MenuUserIcon",
+        "BackIcon"
+      ],
+      "rules": "MenuCloverIcon, MenuBookIcon, MenuTalkIcon, MenuUserIcon 은 svg 내부 크기가 고정되어 있어 외부에서 사이즈(width, height) 조절 불가. 이외 아이콘은 size 프롭 등으로 제어 가능."
+    }
+  }
+}

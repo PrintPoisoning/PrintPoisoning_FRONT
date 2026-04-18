@@ -10,15 +10,14 @@
 !.yarn/releases
 !.yarn/versions
 
+# vite
+/dist
+/dist-ssr
+/.vite
+*.local
+
 # testing
 /coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
 
 # misc
 .DS_Store
@@ -29,15 +28,24 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+logs
+*.log
 
 # env files (can opt-in for committing if needed)
 .env*
 
-# vercel
-.vercel
-
 # typescript
 *.tsbuildinfo
-next-env.d.ts
 
+# storybook
 *storybook.log
+storybook-static
+
+# editor
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea
+
+# backup of previous Next.js project
+/dump

@@ -1,6 +1,6 @@
-import type { StorybookConfig } from "@storybook/nextjs";
-
-import path from "path";
+import type { StorybookConfig } from "@storybook/react-vite";
+import path from "node:path";
+import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -10,33 +10,29 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
-    "@storybook/addon-styling-webpack",
     "@storybook/addon-themes",
   ],
+
   framework: {
-    name: "@storybook/nextjs",
+    name: "@storybook/react-vite",
     options: {},
   },
 
-  webpackFinal: async prevConfig => {
-    const newConfig = { ...prevConfig };
-
-    if (newConfig.resolve) {
-      newConfig.resolve.alias = {
-        ...newConfig.resolve.alias,
-        "@": path.resolve(__dirname, "../src"),
-
-        "@app": path.resolve(__dirname, "../src/app"),
-        "@lib": path.resolve(__dirname, "../src/lib"),
-
-        // useRoute에 대한 mocking
-        "next/navigation": path.resolve(__dirname, "./mocks/nextNavigation.ts"),
-      };
-    }
-
-    return newConfig;
+  viteFinal: async prevConfig => {
+    return mergeConfig(prevConfig, {
+      resolve: {
+        alias: {
+          "@": path.resolve(__dirname, "../src"),
+          "@app": path.resolve(__dirname, "../src/app"),
+          "@pages": path.resolve(__dirname, "../src/pages"),
+          "@widgets": path.resolve(__dirname, "../src/widgets"),
+          "@features": path.resolve(__dirname, "../src/features"),
+          "@entities": path.resolve(__dirname, "../src/entities"),
+          "@shared": path.resolve(__dirname, "../src/shared"),
+        },
+      },
+    });
   },
-
-  staticDirs: ["../public"],
 };
+
 export default config;

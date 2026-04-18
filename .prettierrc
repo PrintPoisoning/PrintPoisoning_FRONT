@@ -16,7 +16,22 @@
 
   "plugins": ["@trivago/prettier-plugin-sort-imports"],
 
-  "importOrder": [".css$", "^next", "^react", "^@app", "@lib", "^@", "^[../]", "^[./]", "<THIRD_PARTY_MODULES>"],
+  "importOrder": [
+    ".css$",
+    "^react",
+    "^react-dom",
+    "^react-router",
+    "<THIRD_PARTY_MODULES>",
+    "^@app(/.*)?$",
+    "^@pages(/.*)?$",
+    "^@widgets(/.*)?$",
+    "^@features(/.*)?$",
+    "^@entities(/.*)?$",
+    "^@shared(/.*)?$",
+    "^@/",
+    "^[../]",
+    "^[./]"
+  ],
 
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true

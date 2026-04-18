@@ -16,10 +16,9 @@ const generateSize = (name: string) => {
 
 export default {
   content: [
+    "./index.html",
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/**/*.stories.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.stories.{js,ts,jsx,tsx,mdx}",
     "./.storybook/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {

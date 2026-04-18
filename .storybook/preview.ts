@@ -1,4 +1,4 @@
-import "../src/lib/style/globals.css";
+import "../src/styles/globals.css";
 import "./StorybookGlobalStyle.css";
 
 import { withThemeByClassName } from "@storybook/addon-themes";
