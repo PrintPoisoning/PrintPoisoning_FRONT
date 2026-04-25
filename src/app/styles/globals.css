@@ -5,33 +5,137 @@
 :root {
   --max-width-global_layout: 60rem;
 
-  --background: #ffffff;
+  /* ============= COLOR ============= */
+  /* PRIMARY */
+  --primary-main: #00c86e;
+  --primary-light: #43d493;
+  --primary-lightness: #d8f3e0;
+  --primary-dark: #03854b;
 
-  --transparent_10: rgba(0, 0, 0, 0.1);
-  --transparent_30: rgba(0, 0, 0, 0.3);
-  --transparent_50: rgba(0, 0, 0, 0.5);
-  --transparent_90: rgba(0, 0, 0, 0.9);
+  /* TEXT */
+  --text-main: #2d2d2d;
+  --text-sub: #595959;
+  --text-mute: #a5a5a5;
+  --text-disabled: #d9d9d9;
 
-  --color_black: #000000;
-  --color_main: #43d493;
+  /* SURFACE */
+  --surface-paper: #ffffff;
+  --surface-cream: #fbf8f2;
+  --surface-soft: #f2f1f1;
+  --surface-line: #eeeeee;
 
-  --color_gray_900: #1a1a1a;
-  --color_gray_700: #4d4d4d;
-  --color_gray_500: #808080;
-  --color_gray_400: #a6a6a6;
-  --color_gray_300: #cccccc;
+  /* ACCENT */
+  --accent-blush: #d67f7f;
+  --accent-yellow: #fde500;
 
-  --color_kakao_main: #fee500;
+  /* SEMANTIC */
+  --semantic-success: var(--primary-main);
+  --semantic-warning: #ffb020;
+  --semantic-danger: #e5484d;
+
+  /* ============= TYPOGRAPHY ============= */
+  --ff-ui: "Pretendard Variable", "Pretendard", system-ui, sans-serif;
+  --ff-hand: "Nanum Pen Script", "Gaegu", "Pretendard", sans-serif;
+
+  /* ============= SPACING (4-base, 1rem = 10px) ============= */
+  --sp-1: 0.4rem;
+  --sp-2: 0.8rem;
+  --sp-3: 1.2rem;
+  --sp-4: 1.6rem;
+  --sp-5: 2rem;
+  --sp-6: 2.4rem;
+  --sp-8: 3.2rem;
+  --sp-10: 4rem;
+  --sp-12: 4.8rem;
+  --sp-16: 6.4rem;
+
+  /* ============= RADIUS ============= */
+  --r-xs: 0.6rem;
+  --r-sm: 1rem;
+  --r-md: 1.4rem;
+  --r-lg: 2rem;
+  --r-xl: 2.8rem;
+  --r-pill: 99.9rem;
+
+  /* ============= SHADOW (sketchy) ============= */
+  --sh-1: 0 0.1rem 0 rgba(45, 45, 45, 0.04), 0 0.2rem 0.8rem rgba(159, 174, 167, 0.18);
+  --sh-2: 0 0.4rem 1.2rem rgba(159, 174, 167, 0.28);
+  --sh-3: 0 1.2rem 2.2rem -0.8rem rgba(159, 174, 167, 0.45);
+  --sh-shelf: 0 1.76rem 1.216rem -0.8rem rgba(159, 174, 167, 0.65);
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
-  background: var(--background);
-  color: var(--color_black);
+  background: var(--surface-cream);
+  color: var(--text-main);
+  font-family: var(--ff-ui);
+  -webkit-font-smoothing: antialiased;
 }
 
 * {
   box-sizing: border-box;
+}
+
+@layer components {
+  .text-display {
+    font-size: 4.2rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .text-h3-s {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .text-body-l {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .text-body {
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+  .text-caption-l {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text-sub);
+  }
+  .text-hand {
+    font-family: var(--ff-hand);
+    font-size: 2.8rem;
+    color: var(--primary-dark);
+  }
+  .text-legend {
+    font-family: var(--ff-hand);
+    font-size: 1.8rem;
+    color: var(--primary-dark);
+  }
+  .text-eyebrow {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-main);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .text-label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-mute);
+    letter-spacing: -0.01em;
+  }
+  .text-caption {
+    font-size: 1.2rem;
+    color: var(--text-mute);
+  }
 }

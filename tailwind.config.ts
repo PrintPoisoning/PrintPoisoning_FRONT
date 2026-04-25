@@ -28,24 +28,34 @@ export default {
       },
 
       colors: {
-        background: "var(--background)",
-
-        transparent_10: "var(--transparent_10)",
-        transparent_30: "var(--transparent_30)",
-        transparent_50: "var(--transparent_50)",
-        transparent_90: "var(--transparent_90)",
-
-        black: "var(--color_black)",
-
-        main: "var(--color_main)",
-
-        gray_900: "var(--color_gray_900)",
-        gray_700: "var(--color_gray_700)",
-        gray_500: "var(--color_gray_500)",
-        gray_400: "var(--color_gray_400)",
-        gray_300: "var(--color_gray_300)",
-
-        kakao_main: "var(--color_kakao_main)",
+        primary: {
+          DEFAULT: "var(--primary-main)",
+          main: "var(--primary-main)",
+          light: "var(--primary-light)",
+          lightness: "var(--primary-lightness)",
+          dark: "var(--primary-dark)",
+        },
+        text: {
+          main: "var(--text-main)",
+          sub: "var(--text-sub)",
+          mute: "var(--text-mute)",
+          disabled: "var(--text-disabled)",
+        },
+        surface: {
+          paper: "var(--surface-paper)",
+          cream: "var(--surface-cream)",
+          soft: "var(--surface-soft)",
+          line: "var(--surface-line)",
+        },
+        accent: {
+          blush: "var(--accent-blush)",
+          yellow: "var(--accent-yellow)",
+        },
+        semantic: {
+          success: "var(--semantic-success)",
+          warning: "var(--semantic-warning)",
+          danger: "var(--semantic-danger)",
+        },
       },
 
       zIndex: {
@@ -53,15 +63,42 @@ export default {
         toast: "600",
       },
 
+      spacing: {
+        1: "var(--sp-1)",
+        2: "var(--sp-2)",
+        3: "var(--sp-3)",
+        4: "var(--sp-4)",
+        5: "var(--sp-5)",
+        6: "var(--sp-6)",
+        8: "var(--sp-8)",
+        10: "var(--sp-10)",
+        12: "var(--sp-12)",
+        16: "var(--sp-16)",
+      },
+
       fontSize: generateSize("size"),
-      borderRadius: generateSize("radius"),
+
+      borderRadius: {
+        ...generateSize("radius"),
+        xs: "var(--r-xs)",
+        sm: "var(--r-sm)",
+        md: "var(--r-md)",
+        lg: "var(--r-lg)",
+        xl: "var(--r-xl)",
+        pill: "var(--r-pill)",
+      },
 
       fontFamily: {
-        jalnan: "var(--font-jalnan)",
+        sans: ["var(--ff-ui)"],
+        hand: ["var(--ff-hand)"],
       },
 
       boxShadow: {
         layout_shadow: "0 0 3rem 3rem rgba(0, 0, 0, 0.1)",
+        1: "var(--sh-1)",
+        2: "var(--sh-2)",
+        3: "var(--sh-3)",
+        shelf: "var(--sh-shelf)",
       },
 
       backgroundImage: {
