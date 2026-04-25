@@ -49,3 +49,5 @@ storybook-static
 
 # backup of previous Next.js project
 /dump
+
+.claude/docs
